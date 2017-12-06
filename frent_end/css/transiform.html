@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.box {
+			font-size:50px;
+			width:200px;
+			height: 200px;
+			line-height: 200px;
+			margin: auto;
+			border-radius: 100%;
+			border:solid #ccc 1px;
+			background-color: blue; 
+			text-align: center;
+			color: #fff;
+		}
+		.transition {
+			transform: translateX(-500px) rotate(720deg) scale(-1.5);
+			transition: all 1.5s; 
+	
+		}
+	</style>
+</head>
+<body>
+	 <div class="box">
+		 +
+	 </div>
+	 <script>
+	     var box = document.getElementsByClassName("box")[0];
+	     box.addEventListener("mouseover",function() {
+	     	 this.classList.add("transition");
+	     });
+	 </script>
+</body>
+</html>

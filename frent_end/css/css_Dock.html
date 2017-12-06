@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="gb2312">
+	<title>CSS3 Dock</title>
+	<style>
+		.container {
+			display:flex;
+			justify-content:space-around;
+		}
+		.container span{
+			padding:5px 10px;
+			background: linear-gradient(to bottom, red, blue);
+			box-shadow: -1px 1px 1px 1px blue,1px 1px 1px 1px blue;
+			border-radius: 5px;
+			
+		}
+		.container span:active {
+			animation: bance .5s 6 alertnate ease;
+		}
+		@keyframes bance {
+			0% { transform: translateY(0); },
+			100% { transform: translateY(-20px);}
+		};
+	</style>
+</head>
+<body>
+	 	<div class="container">
+			 <span>按钮1</span>
+			 <span>按钮2</span>
+			 <span>按钮3</span>
+	 	</div>
+</body>
+</html>

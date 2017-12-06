@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.wrapper {
+			width: 100%;
+			height: 300px;
+			overflow: hidden;
+			font-size: 48px;
+			list-style: none;
+		}
+		.wrapper ul{
+			width: 400%;
+			height: 300px;
+			overflow: hidden;
+			list-style: none;
+			/*animation 语法：
+				animation-name: play;				   // 需要执行的动画名称
+				animation-duration: 2s;				   // 整个动画播放的所需时间
+				animation-timing-function: ease-out;   // 运动类型
+				animation-delay: 2s;				   // 延迟2s  开始播放
+				animation-iteration-count: infinite;   // 重复
+			*/
+			-webkit-animation: play 9s ease-in-out infinite 2s;
+		}
+		.wrapper ul li {
+			width: 25%;
+			height: 300px;
+			float: left;
+			line-height: 300px;
+			text-align: center;
+			background-color: lightblue;
+			color:#fff;
+		} 
+		@keyframes play {
+			0%,25% {
+				transform:translateX(-0%);
+			}
+			25%,50% {
+				transform:translateX(-25%);
+			}
+			50%,75% {
+				transform:translateX(-50%);
+			}
+			75%,100% {
+				transform:translateX(-75%);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul >
+			 <li>1</li>
+			 <li>2</li>
+			 <li>3</li>
+			 <li>4</li>
+		</ul>
+	</div>
+</body>
+</html>

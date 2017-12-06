@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			display: flex;
+			
+		}
+		.container>:first-child {
+			flex:1;
+			border-bottom: solid 1px #ccc; 
+
+		}
+		.container>:last-child {
+			flex:1;
+			border-bottom: solid 1px #ccc; 
+		}
+		.text {
+			padding: 0 15px;
+			min-width: 100px;
+			position: relative;
+			top: 8px;	
+			border:0;
+		}
+	</style>
+</head>
+<body>
+	 <div class="container">
+		<div></div>
+		<div class="text">xxxxxxxxxx</div>
+		<div></div>
+	 </div>
+
+</body>
+</html>

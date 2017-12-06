@@ -1,0 +1,9 @@
+﻿css3 选择器
+	群组选择器  	.container,.container2
+	后代选择器  	ul li  ;   .class .box  
+	兄弟选择器  	.container>first-child+div    这样就会选择到第二个div
+	兄弟通用选择器：  .container>first-child ~ div    会选中所有的	
+	类型选择器  	input[type="text"]
+	类型状态选择器  input[disabled]
+    父级唯一选择器  div>:only-child
+	not 选择器      input:not([type="text"])

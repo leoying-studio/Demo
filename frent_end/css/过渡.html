@@ -1,0 +1,64 @@
+<!DOC HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			数据
+		</title>
+		<style>
+			/*transition 包含四个属性值
+				1.transition-property  //特征
+				2.transition-duration  //持续  [dju-reɪʃ(ə)n]
+				3.transition-timing-function  //指定过渡函数 提供了6个可以选择: ease linear ease-in ease-out ease-in-out,也可以自己去定义更加
+				精准.
+				4.transition-delay    // 延期  [dilei] 
+				实现一个最简单的过渡 
+			 */
+			.container {
+				width:300px;
+				height:300px;
+				background:red;
+				transition:background 2s linear;
+			}
+			.container:hover {
+				background:#666;
+			}
+			.box {
+				width:200px;
+				height:5px;
+				background:#ccc;
+			}
+			.box span {
+			   display:block;
+			   background:red;
+			   width:0%;
+			   opacity:0;
+			   height:100%;
+			   transition:width 5s ease-in-out , opacity 5s;   //简写的方法。
+			}
+			/*
+				也可以分开来写
+				transition-property: width,opacity;
+				transition-duration:5s,2s;
+			*/
+			.box:hover span {
+				width:100%;
+				opacity:1;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div class="box">
+			<span></span>
+		</div>
+	</body>
+	<script>
+		function transition() {
+			setTimeout( () => {
+				document.getElementsByTagName("div")[0].classList.add("container");
+			},1000);
+		}
+		transition();
+	</script>
+</html>

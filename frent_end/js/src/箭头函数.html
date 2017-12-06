@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<script>
+			var obj = {
+				a: ()=> console.log('123'),
+				b: function() {console.log('456')}
+			}
+			console.log(obj.a());   // undefined
+			console.log(obj.b());   // 456
+			
+			//  箭头函数没有  prototype属性, 也没有构造函数的函数体
+			
+			
+			//返回对象的字面量
+			var f = () => ({x:1});  // success
+			//var f = () => {x:2};  //error
+			var result = f();
+			console.log(result);  //ok  {x:1}
+		</script> 
+	<body>
+</html>

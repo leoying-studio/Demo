@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>RemÒ³ÃæËõ·Å°¸Àý</title>
+<meta name="viewport" 
+ content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=10,user-scalable=no" />
+</head>
+<script>
+	(function (doc, win, undefined) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in win? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (clientWidth === undefined) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+          if (doc.addEventListener === undefined) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+     })(document, window);
+</script>
+</body>
+</html>

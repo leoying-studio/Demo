@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义css3的过渡曲线</title>
+	<style>
+		/**
+		 * 贝塞尔曲线的设置     transition-timing-function:cubic-bezier(*,*,*,*);
+		 * 由于一个贝塞尔曲线可以看作四个控制点去控制.  每个点的值为0 和 1之见去控制速度
+		 * 贝塞尔控制
+		 */
+		.container {
+			width: 100%;
+			height: 10px;
+			background: #ccc;
+		}
+		.container div {
+			height: 100%;
+			width: 0%;
+			background: red;
+			transition: width 5s;
+			/*0的速度最快,1的速度最慢*/
+			transition-timing-function:cubic-bezier(0,0.5,.8,0);
+		}
+		.container:hover div {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+		<div class="container">
+			 <div></div>
+		</div>
+</body>
+</html>

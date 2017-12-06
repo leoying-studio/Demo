@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	  <script>
+	  		async function sleep() {
+	  			await console.log(123);
+	  			console.log(789);
+	  		}
+
+	  		function trigger() {
+	  			sleep();
+	  			console.log(456);
+	  		}
+
+	  		trigger();
+	  </script>
+</body>
+</html>
