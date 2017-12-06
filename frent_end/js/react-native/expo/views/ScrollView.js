@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Animated, Dimensions } from 'react-native';
 const width = Dimensions.get('window').width
-export default class App extends React.Component {
+export default class ScrollViewPage extends React.Component {
 
   constructor(props) {
       super(props);
