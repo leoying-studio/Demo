@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script>
+		     var timer = null
+			window.onload = function() {
+				function thr() {
+					return setTimeout(() => {
+						console.log("hello world");
+					},3000); //如果间距时间太短，而触发速度太快则依然会多次触发
+				}
+
+				document.getElementById("thr").onclick = function() {
+					clearTimeout(timer); //  每次执行前都把上次的清空只会执行一次, 
+					timer = thr();
+				}
+			}
+		</script>
+
+		<button type="button" id="thr">thr</button>
+</body>
+</html>
