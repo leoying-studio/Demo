@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	   <script>
+	   		var a = "0.005";
+	   		var b = "0.004";
+	   		var c = "0.2";
+	   		var d = "10.95";
+	   		var e = "11011";
+
+	   		var transform_a = parseInt(a);
+	   		var transform_b = parseInt(b);
+	   		var transform_c = parseInt(c);
+	   		var transform_d = parseInt(d);
+	   		var transform_e = parseInt(e);
+	   		console.log(transform_a);  // 0
+	   		console.log(transform_b);  // 0
+	   		console.log(transform_c);  // 0
+	   		console.log(transform_d);  // 10
+	   		// 总结普通数字的转换不会四舍五入， 也不会保留小数。  直接取整.
+	   		// 除此之外parseInt 还可以把 二进制， 6进位的 等等字符串转换成整数。
+	   		// parseInt 可以带两个参数, 第一个是解析的字符串，第二个是解析的进位制，chrom环境下默认是
+	   		// 十进制解析的
+	   		console.log(transform_e);
+
+
+	   </script>
+</body>
+</html>
