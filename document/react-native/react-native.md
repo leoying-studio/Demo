@@ -156,9 +156,12 @@ ViewPagerAndroid 的弊端:  组件实例化之后没办法通过  setState 再�
 ### 3. 提示  “React Native 版本错误”  解决方法: yarn env test  然后yarn install  一下。 重启OK
 ### 4.安卓平台添加投影效果:  需要额外添加一个 'elevation'属性, 另外背景需要有指定颜色，不写或者写transparent那么会看不到效果。
 ### 5.panResponder 与flatList  有冲突
-### 6.``` <View style={{flexDirection: 'row', }}>
-		<Text></Text>
-       </View>  ```
+### 6.
+``` 
+<View style={{flexDirection: 'row', }}>
+	<Text></Text>
+</View>  
+```
 此时Text  如果不设置 flex: 1,  iphone 6 上会显示不全文字	
 ## 7. 有时候为了封装一个组件，为了将值均传递给组件, 可以使用{...this.props}展开所有属性。  但是这个时候问题来了，如果当前组件已经
 定义该属性，是不会调用传递的方法，以当前组件的属性为主。
