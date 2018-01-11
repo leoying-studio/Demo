@@ -72,21 +72,21 @@ $ npm start
 		####（3）获取值：
 		{this.props.navigation.state.params.info}  
 	
-#二、React-Native 组件技巧
+# 二、React-Native 组件技巧
 1.Text  组件可以通过"numberOfLines" 属性控制最多显示的行数,超出部分自动显示省略号.
 配合numberOfLines属性可以看到,ellipsizeMode属性有四个属性: head  头部显示省略号, middle 中间显示, tail(默认值)  ellipsizeMode='middle'
 native  base  
 之前的版本可以通过获取当前节点的高度来控制然后再后面添加一个<Text></Text>添加....,  但是并不推荐
 
 
-#三、组件的样式设置
+# 三、组件的样式设置
 	水平方向的padding: paddingHorizontal
 	垂直方向的padding：paddingVertical   垂直方向填充
 	IOS背景有底色的问题:
 		场景: 定位一个返回按钮在屏幕的左上角，  android显示正常，但是ios平台显示有白色的底色。
 		处理方法：将外层的view  设置backgroundColor: 'transparent'  属性(解决).
 
-#四、redux的使用
+# 四、redux的使用
   触发redux, 执行(reducer)和响应(getState)三部分部分。 
 1. reducer 的设置:	
 	const counter = 0;
