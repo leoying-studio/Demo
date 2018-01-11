@@ -29,48 +29,48 @@ $ npm start
 
 # react-navigation 导航组件
 ## react-navigation
-   ### (1) 安装之后通过import 导入   import { TabNavigator, StackNavigator } from 'react-navigation';
-   ### (2) 其中react-navigation  包含多个组件，其中包括 tabNavigator 类似  tab 的这种tab切换页面导航菜单， stackNavigator 是整个路由导航的创建，可以直接
-   进行路由导航配置。
-   ### (3) 普通导航路由的创建: 
-		可以直接调用 StackNavigator({
-			Home: {
-				screen: Home,
-				navigationOptions: {
-					// 路由导航的配置项
-					headerTitle: "Home",
-					headerStyle: {backgroundColor: 'green'},  //导航栏的样式
-					headerTitleStyle: {},
-					headerLeft: <Button></Button>,			
-				}
-			},
-			Friends: {
-				screen: Friends,
-				title: 'Friends'
-			}
-		});   //这样创建了最简单的路由对象
-	### (4) 通过TabNavigator 创建带有 Tab 的导航页面
-		TabNavigator(RouteConfigs, TabNavigatorConfig)
-		const instance = StackNavigator({ Home:{title:'首页', screen: HomeScreen} },{ /*路由配置项*/})
-		stackNavigator({
-			Root: {
-				screen: TabNavigator({
-					// 通过TabNavigator  来添加多个屏幕对象，最后将该实例赋值给  screen属性
-				})
-			}
+### (1) 安装之后通过import 导入   import { TabNavigator, StackNavigator } from 'react-navigation';
+### (2) 其中react-navigation  包含多个组件，其中包括 tabNavigator 类似  tab 的这种tab切换页面导航菜单， stackNavigator 是整个路由导航的创建，可以直接
+进行路由导航配置。
+### (3) 普通导航路由的创建: 
+可以直接调用 StackNavigator({
+	Home: {
+		screen: Home,
+		navigationOptions: {
+			// 路由导航的配置项
+			headerTitle: "Home",
+			headerStyle: {backgroundColor: 'green'},  //导航栏的样式
+			headerTitleStyle: {},
+			headerLeft: <Button></Button>,			
+		}
+	},
+	Friends: {
+		screen: Friends,
+		title: 'Friends'
+	}
+});   //这样创建了最简单的路由对象
+### (4) 通过TabNavigator 创建带有 Tab 的导航页面
+TabNavigator(RouteConfigs, TabNavigatorConfig)
+const instance = StackNavigator({ Home:{title:'首页', screen: HomeScreen} },{ /*路由配置项*/})
+stackNavigator({
+	Root: {
+		screen: TabNavigator({
+			// 通过TabNavigator  来添加多个屏幕对象，最后将该实例赋值给  screen属性
 		})
-	### (5)路由导航的跳转   TabNavigator(RouteConfigs, TabNavigatorConfig)
-		(6)navigation属性中提供了很多的函数简化界面间操作，简单列举几点：
-		####（1）通过navigate函数实现界面之间跳转：
-			this.props.navigation.navigate('Mine');  
-			参数为我们在StackNavigator注册界面组件时的名称。同样也可以从当前页面返回到上一页：
-			// 返回上一页  
-			this.props.navigation.goBack();  
-		####（2）跳转时传值：
-			this.props.navigation.navigate('Mine',{info:'传值过去'});  
-			第一个参数同样为要跳转的界面组件名称，第二个参数为要传递的参数，info可以理解为key，后面即传递的参数。
-		####（3）获取值：
-		{this.props.navigation.state.params.info}  
+	}
+})
+### (5)路由导航的跳转   TabNavigator(RouteConfigs, TabNavigatorConfig)
+(6)navigation属性中提供了很多的函数简化界面间操作，简单列举几点：
+####（1）通过navigate函数实现界面之间跳转：
+	this.props.navigation.navigate('Mine');  
+	参数为我们在StackNavigator注册界面组件时的名称。同样也可以从当前页面返回到上一页：
+	// 返回上一页  
+	this.props.navigation.goBack();  
+####（2）跳转时传值：
+	this.props.navigation.navigate('Mine',{info:'传值过去'});  
+	第一个参数同样为要跳转的界面组件名称，第二个参数为要传递的参数，info可以理解为key，后面即传递的参数。
+####（3）获取值：
+{this.props.navigation.state.params.info}  
 	
 # 二、React-Native 组件技巧
 1.Text  组件可以通过"numberOfLines" 属性控制最多显示的行数,超出部分自动显示省略号.
@@ -144,21 +144,21 @@ ViewPagerAndroid 的弊端:  组件实例化之后没办法通过  setState 再�
 
 
 # question:   
-	## 1.组件如果使用类的修饰器可能会导致父组件无法通过"refs"属性来获取子组件实例。  建议去除类的修饰器，改用其他的。
-	## 2.根据flatList  组件中提供的仅(ios)有 "onScroll" 功能  在滚动过程中可以捕获到， android中无法捕获到。
-	## 3. 提示  “React Native 版本错误”  解决方法: yarn env test  然后yarn install  一下。 重启OK
-	## 4.安卓平台添加投影效果:  需要额外添加一个 'elevation'属性, 另外背景需要有指定颜色，不写或者写transparent那么会看不到效果。
-	## 5.panResponder 与flatList  有冲突
-	## 6. <View style={{flexDirection: 'row', }}>
-			<Text></Text>
-	   </View>
-	此时Text  如果不设置 flex: 1,  iphone 6 上会显示不全文字	
-	## 7. 有时候为了封装一个组件，为了将值均传递给组件, 可以使用{...this.props}展开所有属性。  但是这个时候问题来了，如果当前组件已经
-	定义该属性，是不会调用传递的方法，以当前组件的属性为主。
-	```
-		<flowList {...this.props} onRefresh={()=>{}}/>  //这种情况下即使父组件传递了onRefresh属性,依然不会去使用。
-		但是使用this.props.onRefresh  依然可以获取到
-	```
-	## 8. image 图片如果是安卓平台需要添加样式属性  overlayColor: '#fff',  否则可能会有圆角显示不全的情况。
+## 1.组件如果使用类的修饰器可能会导致父组件无法通过"refs"属性来获取子组件实例。  建议去除类的修饰器，改用其他的。
+## 2.根据flatList  组件中提供的仅(ios)有 "onScroll" 功能  在滚动过程中可以捕获到， android中无法捕获到。
+## 3. 提示  “React Native 版本错误”  解决方法: yarn env test  然后yarn install  一下。 重启OK
+## 4.安卓平台添加投影效果:  需要额外添加一个 'elevation'属性, 另外背景需要有指定颜色，不写或者写transparent那么会看不到效果。
+## 5.panResponder 与flatList  有冲突
+## 6. <View style={{flexDirection: 'row', }}>
+		<Text></Text>
+   </View>
+此时Text  如果不设置 flex: 1,  iphone 6 上会显示不全文字	
+## 7. 有时候为了封装一个组件，为了将值均传递给组件, 可以使用{...this.props}展开所有属性。  但是这个时候问题来了，如果当前组件已经
+定义该属性，是不会调用传递的方法，以当前组件的属性为主。
+```
+	<flowList {...this.props} onRefresh={()=>{}}/>  //这种情况下即使父组件传递了onRefresh属性,依然不会去使用。
+	但是使用this.props.onRefresh  依然可以获取到
+```
+## 8. image 图片如果是安卓平台需要添加样式属性  overlayColor: '#fff',  否则可能会有圆角显示不全的情况。
 
 	
