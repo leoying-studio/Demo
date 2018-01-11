@@ -1,27 +1,27 @@
-﻿一, react-native  的环境搭建。
-1、普通安装
+﻿# 一, react-native  的环境搭建。
+## 1、普通安装
 (1)、 npm install -g react-native-cli   //安装脚手架
 (2).  react-native-cli init "项目名称"  // 初始化项目
 
-2、 yarn 安装
+## 2、 yarn 安装
 相关软件可以在\\192.168.30.247\yryz\softwares\前端\reactnative 获取，编辑器建议使用vscode
-1).按照nodejs
+### 1).按照nodejs
 安装完node后建议设置npm镜像以加速后面的过程
 npm config set registry https://registry.npm.taobao.org --global
 npm config set disturl https://npm.taobao.org/dist --global
-2).安装yarn
+### 2).安装yarn
 Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载。React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。
 npm install -g yarn react-native-cli
 安装完yarn后同理也要设置镜像源：
 yarn config set registry https://registry.npm.taobao.org --global
 yarn config set disturl https://npm.taobao.org/dist --global
 安装完yarn之后就可以用yarn代替npm了，例如用yarn代替npm install命令，用yarn add 某第三方库名代替npm install --save 某第三方库名。
-3).按照expo软件，ios在appsotore自行下载，安卓在共享目录中有安装apk
-4).命令行进入项目目录 ，执行yarn 下载依赖包
+### 3).按照expo软件，ios在appsotore自行下载，安卓在共享目录中有安装apk
+### 4).命令行进入项目目录 ，执行yarn 下载依赖包
 执行 yarn start 打开调试应用
 
 
-3、  
+## 脚手架安装
 $ npm i -g create-react-native-app
 $ create-react-native-app my-project
 $ cd my-project
