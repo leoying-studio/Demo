@@ -109,11 +109,10 @@ native  base
 执行过程: 
 
 
-#五、网络图片的缓存策略
-
+# 五、网络图片的缓存策略
 React Native 框架支持对网络图片的缓存，如果图片缓存到本地，以后一直使用这个缓存，不管服务器侧该文件是否发生改变。
 
-1，使用样例
+## 1，使用样例
 我们只需要在指定 Image 数据源时，在 source 属性中加入 cache 键以明确我们期望使用的图片缓存策略即可。
 <Image style={styles.image} source={{
   uri: 'http://hangge.com/img.png 
@@ -121,13 +120,13 @@ React Native 框架支持对网络图片的缓存，如果图片缓存到本地�
 ',
   cache: 'force-cache'}} />
 
-2，cache 可选值
+## 2，cache 可选值
 default：使用平台默认策略
 reload：数据将从原始地址加载，不使用现有的缓存数据。
 force-cache：总是使用缓存数据，如果没有缓存，则从原始地址加载。
 only-if-cached：总是使用缓存数据，如果没有缓存，则失败。
 
-# 六、 ViewPagerAndroid  该功能主要是提供安卓平台滑动分页的功能。 ios平台可以使用ScrollView 来做分页切换
+# 六、ViewPagerAndroid  该功能主要是提供安卓平台滑动分页的功能。 ios平台可以使用ScrollView 来做分页切换
 但是ScrollView  在安卓平台多次加载会有严重的性能问题可以通过平台去判断， 然后选择不同的组件来分页处理。
 
 ViewPagerAndroid 的弊端:  组件实例化之后没办法通过  setState 再次改变属性(不能再次渲染),  一般在组件实例化之前指定好属性
@@ -145,21 +144,21 @@ ViewPagerAndroid 的弊端:  组件实例化之后没办法通过  setState 再�
 
 
 # question:   
-	1.组件如果使用类的修饰器可能会导致父组件无法通过"refs"属性来获取子组件实例。  建议去除类的修饰器，改用其他的。
-	2.根据flatList  组件中提供的仅(ios)有 "onScroll" 功能  在滚动过程中可以捕获到， android中无法捕获到。
-	3. 提示  “React Native 版本错误”  解决方法: yarn env test  然后yarn install  一下。 重启OK
-	4.安卓平台添加投影效果:  需要额外添加一个 'elevation'属性, 另外背景需要有指定颜色，不写或者写transparent那么会看不到效果。
-	5.panResponder 与flatList  有冲突
-	6. <View style={{flexDirection: 'row', }}>
+	## 1.组件如果使用类的修饰器可能会导致父组件无法通过"refs"属性来获取子组件实例。  建议去除类的修饰器，改用其他的。
+	## 2.根据flatList  组件中提供的仅(ios)有 "onScroll" 功能  在滚动过程中可以捕获到， android中无法捕获到。
+	## 3. 提示  “React Native 版本错误”  解决方法: yarn env test  然后yarn install  一下。 重启OK
+	## 4.安卓平台添加投影效果:  需要额外添加一个 'elevation'属性, 另外背景需要有指定颜色，不写或者写transparent那么会看不到效果。
+	## 5.panResponder 与flatList  有冲突
+	## 6. <View style={{flexDirection: 'row', }}>
 			<Text></Text>
 	   </View>
 	此时Text  如果不设置 flex: 1,  iphone 6 上会显示不全文字	
-	7. 有时候为了封装一个组件，为了将值均传递给组件, 可以使用{...this.props}展开所有属性。  但是这个时候问题来了，如果当前组件已经
+	## 7. 有时候为了封装一个组件，为了将值均传递给组件, 可以使用{...this.props}展开所有属性。  但是这个时候问题来了，如果当前组件已经
 	定义该属性，是不会调用传递的方法，以当前组件的属性为主。
 	```
 		<flowList {...this.props} onRefresh={()=>{}}/>  //这种情况下即使父组件传递了onRefresh属性,依然不会去使用。
 		但是使用this.props.onRefresh  依然可以获取到
 	```
-	8. image 图片如果是安卓平台需要添加样式属性  overlayColor: '#fff',  否则可能会有圆角显示不全的情况。
+	## 8. image 图片如果是安卓平台需要添加样式属性  overlayColor: '#fff',  否则可能会有圆角显示不全的情况。
 
 	
