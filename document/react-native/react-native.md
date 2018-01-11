@@ -28,26 +28,27 @@ $ cd my-project
 $ npm start
 
 # react-navigation 导航组件
-##. react-navigation
+## react-navigation
    ### (1) 安装之后通过import 导入   import { TabNavigator, StackNavigator } from 'react-navigation';
    ### (2) 其中react-navigation  包含多个组件，其中包括 tabNavigator 类似  tab 的这种tab切换页面导航菜单， stackNavigator 是整个路由导航的创建，可以直接
    进行路由导航配置。
-   ### (3) 普通导航路由的创建: 可以直接调用 StackNavigator({
-											Home: {
-												screen: Home,
-												navigationOptions: {
-													// 路由导航的配置项
-													headerTitle: "Home",
-													headerStyle: {backgroundColor: 'green'},  //导航栏的样式
-													headerTitleStyle: {},
-													headerLeft: <Button></Button>,			
-												}
-											},
-											Friends: {
-												screen: Friends,
-												title: 'Friends'
-											}
-										});   //这样创建了最简单的路由对象
+   ### (3) 普通导航路由的创建: 
+		可以直接调用 StackNavigator({
+			Home: {
+				screen: Home,
+				navigationOptions: {
+					// 路由导航的配置项
+					headerTitle: "Home",
+					headerStyle: {backgroundColor: 'green'},  //导航栏的样式
+					headerTitleStyle: {},
+					headerLeft: <Button></Button>,			
+				}
+			},
+			Friends: {
+				screen: Friends,
+				title: 'Friends'
+			}
+		});   //这样创建了最简单的路由对象
 	### (4) 通过TabNavigator 创建带有 Tab 的导航页面
 		TabNavigator(RouteConfigs, TabNavigatorConfig)
 		const instance = StackNavigator({ Home:{title:'首页', screen: HomeScreen} },{ /*路由配置项*/})
