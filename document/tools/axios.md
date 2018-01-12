@@ -1,6 +1,6 @@
 # axios 
 
-1. get 请求:
+## 1. get 请求:
 ```
 	axios.get('http://xxxxx').then(function() {
 
@@ -15,7 +15,7 @@
 	});
 ```
 
-2. post请求
+## 2. post请求
 ```
 	axios.post('/user',{
 		firstName:'Fred',
@@ -29,7 +29,7 @@
 	});
 ```
 
-3. Promise.all([]);
+## 3. Promise.all([]);
 
 ```
   Promise.all([
@@ -44,7 +44,7 @@
 ```	
 
 
-4. axios 通过配置创建该实例
+## 4. axios 通过配置创建该实例
 
 ```
 	const axios = axios.create({
@@ -56,11 +56,11 @@
 ```
 
 
-5.  对象配置属性配置法(静态方法)
+## 5.  对象配置属性配置法(静态方法)
 
 ```
 	axios.default.baseURL = 'XXXXX';
 	axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 	axios.defaults.headers.post['content-Type'] = 'appliction/x-www-form-urlencoded';
-	
+
 ```
