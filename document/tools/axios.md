@@ -64,3 +64,10 @@
 	axios.defaults.headers.post['content-Type'] = 'appliction/x-www-form-urlencoded';
 
 ```
+
+## 6. 拦截器(重点) axios.interceptors.request.use()
+
+```
+	axios.interceptor.request.use()
+
+```
