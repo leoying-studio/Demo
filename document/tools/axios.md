@@ -68,6 +68,13 @@
 ## 6. 拦截器(重点) axios.interceptors.request.use()
 
 ```
-	axios.interceptor.request.use()
+	// 添加一个请求拦截器
+	axios.interceptors.request.use(function(config){
+	//在请求发出之前进行一些操作
+	return config;
+	},function(err){
+	//Do something with request error
+	return Promise.reject(error);
+	});
 
 ```
