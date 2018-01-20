@@ -6,15 +6,21 @@
 </head>
 <body>
 		<script>
-
-			async function ppp() {
-				debugger;
-				var p = await new Promise(function(resolve, reject) {
-					resolve(true);
-				});	
-				console.log(p.data);
+			async function P() {
+				var items = [];
+				for ( var  i = 0; i< 100; i++) {
+					var item = await new Promise(function(resolve, reject) {
+						resolve(true);
+					});	
+					items.push(item);
+				}
+				return items;
 			}
-			ppp();
+			// Promise.all([]);
+			Promise.all(P()).then( (values) => {
+				console.log(values);
+			})
+
 		</script>
 </body>
 </html>
