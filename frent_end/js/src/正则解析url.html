@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var url = 'http://wx-dev.yryz.com/home?token=690856175453200384-NNFxA4L5WjhE1514513968412&userId=18385203&custId=690856175453200384&custNname=bomb&custImg=http://wx.qlogo.cn/mmopen/vi_32/pnNTuaCyYuLuCiadHfiaessElNllAudia1wtgDtC0H1PjDjDeMHHgnicAzxPhss5XibSic257rPvqZj0zO3GLylKJjiag/132';
+		// var a = /userId(\S*)\&custId{1}/;
+		// var reg = url.match(a);
+
+		var reg = /userId(\S*)\&custId{1}/;
+		if (reg.test(url)) {
+			var userId = url.match(reg)[0].split("&")[0];
+		}
+
+		urlParams = url.split("?")[1].split("&"); 
+		var params = urlParams.map(function(item) {
+			return item = "{" + item.replace(/\=/g, ":") + "}";
+		});
+	</script>
+</body>
+</html>
