@@ -6,10 +6,10 @@
 </head>
 <body>
 		<script>
-			async function P() {
+			function P() {
 				var items = [];
 				for ( var  i = 0; i< 100; i++) {
-					var item = await new Promise(function(resolve, reject) {
+					var item = new Promise(function(resolve, reject) {
 						resolve(true);
 					});	
 					items.push(item);
