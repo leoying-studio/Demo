@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script>
+			let o = {
+				'0': '张三',
+				'1': '25',
+				'2': '女',
+				'length': 3
+			};
+			// Array.from
+			// 静态方法,  o 的 key 要是数字.
+			// 也可以将伪数组转换成为数组(dom集合)
+			let n = Array.from(o);
+			console.log(n);
+			let p = document.querySelectorAll('p');
+			Array.from(p);
+
+
+			// Array.of();  单个值转换成数组
+			function f() {
+				let args = Array.of(...arguments);
+				console.log(args);    //   [1,2,3]
+			}
+			f(1,2,3);
+		</script>
+</body>
+</html>

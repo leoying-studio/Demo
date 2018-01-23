@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// set 是类似于数组的一种结构， 相当于c# 中的字典添加形式， 是一个集合。
+	// 拥有 size 长度
+	// delete(value)  
+	// 更具操作性
+	   let set = new Set();
+	   set.add(5).add(2);
+	   // let source = set.toSource();
+	   for (let s of set) {
+	   		console.log(s);
+	   }
+	   set.delete(2);
+	   console.log(set);
+	</script>
+</body>
+</html>
