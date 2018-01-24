@@ -19,9 +19,34 @@
 	   set.delete(2);
 	   console.log(set);
 
-	   var o = {};
+	   var o = {
+	   	 name: '黄飞鸿',
+	   	 age: 112,
+	   	 gender: '男'
+	   };
 
-	   new WeakSet();
+	  // WeakSetnew 
+	  const ws = new WeakSet();
+	  ws.add(o);
+	</script>
+
+	<script>
+	// map 的使用
+	var m = new Map();
+	for (var k = 0; k < 99; k++) {
+		m.set(k, 'k');
+	}
+	console.log(m);
+
+	//  c#对比
+	// public Dictionary<int, string> setDict()
+	// {
+	// 	Dictionary<int, string> dict = new Dictionary<int, string>();
+	// 	for (int i = 0; i < 100; i ++) {
+	// 		dict.Add(i, "hello");
+	// 	}
+	// 	return dict;
+	// }
 	</script>
 </body>
 </html>
