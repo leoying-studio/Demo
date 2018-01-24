@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/kendo.common.min.css">
+	<link rel="stylesheet" href="./css/kendo.bootstrap.min.css">
+ 	<script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+	<script>	
+		$(document).ready(function() {
+			var viewModel = kendo.observable({
+			    name: "张三",
+			    list: [
+			    	{name: '张三', age: 12},
+			    	{name: '李四', age: 15}
+			    ],
+			    change: function() {
+		          var name = this.get("name");
+		      	  viewModel.set('name', '李四');
+			    },
+			    addItem: function() {
+			    	this.get('list').push({
+			    		name: '李四', age: 15
+			    	});
+			    }
+			});
+			kendo.bind($("#vm"), viewModel);
+			kendo.bind($("#list"), viewModel);
+		});
+			
+	</script>
+</head>
+<body>
+		<div class="grid" id="grid">
+			
+		</div>
+
+		<div id="vm">
+			<input type="text" data-bind="value: name">
+			<button data-bind="click: change">切换</button>
+		</div>
+		
+		<div id="list">
+			<div role="list" data-template="list-item" data-bind="source: list"> 
+				<script type="text/x-kendo-template" id="list-item">
+					<div>
+						<span class="">#=name #</span>
+						<span class="">#=age #</span>
+					</div>
+				</script>
+			</div>
+			<button type="button" data-bind="click: addItem">添加项</button>
+		</div>
+		
+</body>
+</html>

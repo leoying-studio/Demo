@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/kendo.common.min.css">
+	<link rel="stylesheet" href="./css/kendo.bootstrap.min.css">
+ 	<script src="js/jquery.min.js"></script>
+   <script src="js/kendo.all.min.js"></script>
+	<script>	
+		$(document).ready(function() {
+
+			var viewModel = kendo.observable({
+			    name: "张三",
+			    change: function() {
+			         var name = this.get("name");
+			      	  viewModel.set('name', '李四')
+			    }
+			});
+
+			kendo.bind($("#vm"), viewModel);
+
+
+			// $('#grid').kendoGrid({
+			// 	dataSource: {
+   //                  type: "odata",
+   //                  transport: {
+   //                      read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+   //                  },
+   //                  pageSize: 20
+   //              },
+   //              height: 550,
+   //              groupable: true,
+   //              sortable: true,
+   //              pageable: {
+   //                  refresh: true,
+   //                  pageSizes: true,
+   //                  buttonCount: 5
+   //              },
+   //              columns: [{
+   //                  template: "<div class='customer-photo'" +
+   //                                  "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
+   //                              "<div class='customer-name'>#: ContactName #</div>",
+   //                  field: "ContactName",
+   //                  title: "Contact Name",
+   //                  width: 240
+   //              }, {
+   //                  field: "ContactTitle",
+   //                  title: "Contact Title"
+   //              }, {
+   //                  field: "CompanyName",
+   //                  title: "Company Name"
+   //              }, {
+   //                  field: "Country",
+   //                  width: 150
+   //              }]
+			// });
+		});
+	</script>
+</head>
+<body>
+		<div class="grid" id="grid">
+			
+		</div>
+
+		<div id="vm">
+			<input type="text" data-bind="value: name">
+			<button data-bind="click: change">切换</button>
+		</div>
+</body>
+</html>

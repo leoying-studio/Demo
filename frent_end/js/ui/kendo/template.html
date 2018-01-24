@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/kendo.common.min.css">
+	<link rel="stylesheet" href="./css/kendo.default.min.css">
+	<link rel="stylesheet" href="./css/kendo.default.mobile.min.css" />
+
+ 	<script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+</head>
+<body>
+	<script>
+		$(document).ready(function() {
+			$("#grid").kendoGrid({
+				toolbar: ['create'],
+				dataSource: [
+					{  
+					   name: '张三', 
+					   age: 25, 
+					   categories: [
+					   	  {id: 1, name: '蝴蝶泉边'},
+					   	  {id: 2, name: '哭泣的夏天'}
+					   ]
+					},
+					{name: '李四', age: 26,  categories: [
+					   	  {id: 1, name: '蝴蝶泉边'},
+					   	  {id: 2, name: '哭泣的夏天'}
+					   ]},
+					{name: '王五', age: 27,  categories: [
+					   	  {id: 1, name: '蝴蝶泉边'},
+					   	  {id: 2, name: '哭泣的夏天'}
+					   ]},
+					{name: '赵六', age: 28,  categories: [
+					   	  {id: 1, name: '蝴蝶泉边'},
+					   	  {id: 2, name: '哭泣的夏天'}
+					   ]}
+				],
+				editable: 'popup',
+				columns: [
+					{field: 'name', title: '姓名'},
+					{field: 'age',  title: '年龄'},
+					{
+						template: '#for(var i = 0; i < data.categories.length; i++) { # '
+						+ "<input type='checkbox'> #= data.categories[i].name #"
+						+ "# } #"
+					}
+				],
+				schema: {
+					id: ''
+				},
+				columnMenu: true,
+				batch: true,
+			});
+		});
+	</script>
+	<div class="grid" id="grid">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>CSS3</title> 
+<style>
+*{ padding:0;margin:0;font-size:12px; }
+    .open{ width:100px;height:100px;text-align:center;line-height:100px;background-color:pink;color:#000;border-radius:50%;margin:50px auto;box-shadow:0 0 10px,0 0 10px #ff0000; }
+    .fade{ 
+        animation:fade 2s infinite; -webkit-animation:fade 2s infinite;
+        -moz-animation:fade 2s infinite;-o-animation:fade 2s infinite;-ms-animation:fade 2s infinite; 
+        animation-fill-mode:both;
+    }
+    @keyframes fade{
+        0%,100%{
+            opacity:0;transform:scale(0);
+        }
+        50%{
+            opacity:1;transform:scale(1);
+        }
+    }
+</style>
+</head>
+<body>
+<div class="open fade"> Test </div>
+</body>
+</html>
