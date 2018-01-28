@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	    <div id="app">
+		 	<router-link to="/hello">切换到Hello</router-link>
+		    <router-link to="/world">切换到World</router-link>
+		    <router-view></router-view>
+		</div>
+
+		<script>
+			//1.定义个路由对象
+			const hello = {
+				//对象中可以添加多个参数
+				template:"<h1>Hello</h1>",
+				watch:function(to,from){
+						alert(to);
+				}
+			}
+
+			const world = {
+				template:"<h1>World</h1>",
+				//这里的watch是一个对象
+				watch:{
+					'$router':function(to,from){
+						alert(123);
+					}
+				}
+			}
+
+			//2.将路由对象添加到数组,然后指定路由的路径
+			const routes = [
+				{path:"/hello",component:hello},
+				{path:"/world",component:world}
+			]
+
+			//3.实例化一个router
+			const router = new VueRouter({
+				routes
+			});
+
+			//4.作为参数传递到  Vue中
+			new Vue({
+				router
+			}).$mount("#app");
+		</script>
+</body>
+</html>

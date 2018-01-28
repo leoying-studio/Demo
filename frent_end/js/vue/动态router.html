@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	    <div id="app">
+		    <router-link to="/foo/foo">/user/foo</router-link>
+		    <router-link to="/bar/bar=1">/user/bar</router-link>
+		    <router-view></router-view>
+		</div>
+
+		<script>
+			//我把动态路由理解为，切换路由传参
+			const Foo = {template:'<div>获取ID:{{ $route.params.id }}</div>'};
+			//通过query来判断路由传的值
+			const Bar = {template:'<div>获取ID:{{ $route.query.id==1}}</div>'};
+
+			const routes = [
+				{path:"/foo/:id",component:Foo},
+				{path:"/bar/:id",component:Bar}
+			];
+
+			const router = new VueRouter({
+				routes
+			});
+			new Vue({router}).$mount("#app");
+		</script>
+</body>
+</html>
