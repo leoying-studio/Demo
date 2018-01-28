@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: sj.monitor.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: sj.monitor.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>﻿
+  var lost_resources = [];
+  var _lost_resources = {};
+  /**
+   * 客户端资源加载失败时调用这个接口。
+   */
+    M_lost = function(uri){
+    if(_lost_resources.hasOwnProperty(uri)){return;}
+    _lost_resources[uri] = true;
+    lost_resources.push(uri);
+  };
+
+  var DEFAULT_PROFILE = "log";
+  /**
+   * 通用监控接口。
+   * @param {String} seed, 监控点。
+   * @param {String} profile, 监控类型，默认为 `log`。
+   * @return {Object}
+   */
+    M_log = function(seed, profile){
+    if(!seed){return;}
+    // 老版产品监控。
+    if(arguments.length >= 3){return;}
+    var data;
+    if(Object.prototype.toString.call(seed) === "[object Object]"){
+      data = seed;
+      data.profile = seed.profile || DEFAULT_PROFILE;
+    }else{
+      data = {
+        profile: profile || DEFAULT_PROFILE,
+        seed: seed
+      };
+    }
+    M._DATAS.push(data);
+    return data;
+  };
+
+  var RE_FUNCTION = /^function\b[^\)]+\)/;
+  /**
+   * 获得函数名。
+   * @param {Function} func, 函数对象。
+   * @return {String} 函数名。
+   */
+  function function_name(func){
+    var match = String(func).match(RE_FUNCTION);
+    return match ? match[0] : "";
+  }
+
+  /**
+   * 函数调用堆栈。
+   * XXX: 匿名函数的支持。
+   * @param {Function} call, function's caller.
+   * @return {String} stack trace.
+   */
+  function stacktrace(call){
+    var stack = [];
+
+    while(call.arguments &amp;&amp; call.arguments.callee &amp;&amp; call.arguments.callee.caller){
+      call = call.arguments.callee.caller;
+      stack.push("at " + function_name(call));
+
+      // Because of a bug in Navigator 4.0, we need this line to break.
+      // c.caller will equal a rather than null when we reach the end
+      // of the stack. The following line works around this.
+      if (call.caller === call){break;}
+    }
+    return stack.join("\n");
+  }
+
+  /**
+   * JavaScript 异常统一处理函数。
+   * @param {String} message, 异常消息。
+   * @param {String} file, 异常所在文件。
+   * @param {Number} line, 异常所在行。
+   * @param {Number,String} number, 异常编码，IE 支持。
+   * @return {Object} 主要用于单元测试，本身可以不返回。
+   */
+  function error(message, file, line, number, stack){
+    if(!stack &amp;&amp; arguments.callee.caller){
+      stack = stacktrace(arguments.callee.caller);
+    }
+    var data = {
+      profile: "jserror",
+      msg: message || "",
+      file: file || "",
+      line: line || 0,
+      num: number || "",
+      stack: stack || "",
+      lost: lost_resources.join(",")
+    };
+    //M._DATAS.push(data);
+	//console.log(data);
+	alert(data.msg+'\n'+data.file+'\nline:'+data.line);
+    return data;
+  }
+
+  /**
+   * JavaScript 异常接口，用于监控 `try/catch` 中被捕获的异常。
+   * @param {Error} err, JavaScript 异常对象。
+   * @return {Object} 主要用于单元测试。
+   */
+   M_error = function(ex){
+    if (!(ex instanceof Error)) {return;}
+    var stack = ex.stack || ex.stacktrace;
+    return error(
+      ex.message || ex.description,
+      ex.fileName,
+      ex.lineNumber || ex.line,
+      ex.number,
+      stack
+    );
+  };
+
+  /**
+   * 全局 JavaScript 异常监控。
+   * @return {Boolean} 返回 `true` 则控制台捕获异常。
+   *                   返回 `false` 则控制台不捕获异常。
+   *                   建议返回 `false`。
+   */
+  window_onerror = function(message, file, line) {
+    error(message, file, line);
+    return false;
+  };</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="edit-edit.html">edit</a></li><li><a href="sjKeyMaster.html">sjKeyMaster</a></li></ul><h3>Global</h3><ul><li><a href="global.html#btnBox">btnBox</a></li><li><a href="global.html#call_back_sj_dict_show">call_back_sj_dict_show</a></li><li><a href="global.html#error">error</a></li><li><a href="global.html#filterData">filterData</a></li><li><a href="global.html#findRows">findRows</a></li><li><a href="global.html#function_name">function_name</a></li><li><a href="global.html#htmltemple">htmltemple</a></li><li><a href="global.html#invoke">invoke</a></li><li><a href="global.html#M_error">M_error</a></li><li><a href="global.html#M_log">M_log</a></li><li><a href="global.html#M_lost">M_lost</a></li><li><a href="global.html#PageRows">PageRows</a></li><li><a href="global.html#query_list">query_list</a></li><li><a href="global.html#RowIndex">RowIndex</a></li><li><a href="global.html#Serch">Serch</a></li><li><a href="global.html#sj_edit">sj_edit</a></li><li><a href="global.html#stacktrace">stacktrace</a></li><li><a href="global.html#trigger">trigger</a></li><li><a href="global.html#UrlParam">UrlParam</a></li><li><a href="global.html#UrlParam2">UrlParam2</a></li><li><a href="global.html#window_onerror">window_onerror</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 27 2016 17:04:38 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

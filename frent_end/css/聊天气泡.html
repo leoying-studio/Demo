@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		html {
+			font-size: 100px;
+		}
+		.container {
+			width: 3rem;
+			height:.5rem;
+			border-radius:30px;
+			margin-top:15px;
+			position: relative;
+			background: #4396F5;
+		}
+		.container::after {
+			display: block;
+			position: absolute;
+			left: 50%;
+			top: -.09rem;
+			content: "";
+			z-index: 999;
+			margin-left: -.1rem;
+			border-left: .1rem solid transparent;;
+			border-right: .1rem  solid transparent;
+			border-bottom: .1rem  solid #4396F5;
+		}
+
+		.bubble {
+			margin: 1rem;
+			width: 3rem;
+			height: .5rem;
+			background-color: #14AAE8;
+			border-radius:10px;
+			position: relative;
+		}
+		.bubble::after {
+			position: absolute;
+			content: "";
+			left: -.1rem;
+			border-bottom: .2rem solid transparent;
+			border-right: .2rem solid #14AAE8;
+			border-top:.2rem solid transparent;
+		}
+	</style>
+	<script>
+	    var f = function() {
+	    	var Base_SIZE = 100;
+	    	var BASE_WIDTH = 750;
+	    	var width = document.documentElement.clientWidth;
+	    	width = width > 750 ? 750 : width;
+	    	document.documentElement.style.fontSize = (width / BASE_WIDTH) * Base_SIZE + "px";
+	    }
+		window.addEventListener("resize",f);
+	</script>
+</head>
+<body>
+	  <div class="container">
+	  	  
+	  </div>
+
+	  <div class="bubble">
+	  	 	
+	  </div>
+</body>
+	
+</html>

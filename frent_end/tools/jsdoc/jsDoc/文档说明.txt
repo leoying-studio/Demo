@@ -1,0 +1,6 @@
+JSDoc3对对象属性操作的命名不支持解析
+@example:var sj ={};
+此时的sj.invok解析无效,函数名命名中如果有“,”号，生成文档将忽略
+sj.invok = function(){
+			
+}

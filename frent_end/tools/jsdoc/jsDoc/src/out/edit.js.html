@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: edit.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: edit.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>﻿/**
+ * [sj_edit 实例化后创建容器面板]
+ * @return {null} 没有返回类型
+ */
+var sj_edit =function()
+{
+	createEdit();
+	//事件赋值封装封装
+var obj ={
+			onChange:onChangeWidget=null,
+			onSelected: onSelectedWidget = null
+		}
+
+/**
+ * createEdit  方法名通过传递参数属性创建对应控件
+ */
+function createEdit()
+{
+	  var parentContainer = document.createElement("div");
+	  new sj.ui.createEdit(parentContainer);
+	  CheckedUI();
+		  operatorNode();
+		  /**
+		   * 当点击按钮调用函数创建option对象，执行创建控件
+		   */
+		  $("#create_Btn").click(function () {
+			    //先创建DOM
+				var option = createObject();
+				var div = document.createElement("div");
+				div.id ="sj_widget";
+				document.body.appendChild(div);
+				/**
+				 * [widget 变量名称，创建控件后的返回值]
+				 * widget 创建控件后,返回控件属性对象
+				 * @param {Element} div 节点容器
+				 * @param {Object}  option 需要创建的数据类型控件属性对象
+				 */
+				var widget = new sj.ui.edit(div, option);
+				$("#box").hide();
+		        $("#TestBox").show();
+				displayBackType(widget.option);
+				$(".backType").each(function () {
+					$(this).click(function () {
+						var index = $(".backType").index($(this));
+						if(obj.onChange==null)
+						alert("请触发选择项后执行事件");
+						else
+						getReturnTypeData(obj.onChange,index);
+					})
+		    });
+	});
+}
+
+/**
+ * operatorNode  方法名称，对创建面板的数据源节点进行添加操作
+ * 
+ */
+function operatorNode() {
+		  $("#addDataSource").click(function () {
+		var table = document.getElementById('table').lastChild;
+		var tr = document.createElement("tr");
+		var td = document.createElement("td");
+		td.innerHTML = "&lt;input type = 'text' class='name'/>";
+		tr.appendChild(td);
+		var td = document.createElement("td");
+		td.innerHTML = "&lt;input type = 'text' class='value'/>";
+		tr.appendChild(td);
+		var td = document.createElement("td");
+		td.innerHTML = "&lt;a href='#' onclick = 'del(this);return false;'>删除&lt;/a>";
+		tr.appendChild(td);
+		table.appendChild(tr);
+	});
+
+}
+
+/**
+ * del  方法名称，对数据源配置进行删除操作
+ * @param {Object} obj 当前需要删除的对象，单击删除按钮可提供当前行的删除操作
+ */
+function del(obj) {
+	var table = document.getElementById("table").lastChild;
+	var tr = obj.parentNode.parentNode;
+	table.removeChild(tr);
+}
+
+/**
+ * CheckedUI 当前方法根据选中的控件类型，进行当前控件类型的属性界面动态筛选操作筛选操作
+ */
+function CheckedUI() {
+	//默认选中
+	$("#simple").attr("checked",true);
+	$(".typeWidget").eq(0).attr("checked",true);
+	$(".typeWidget").eq(7).parent().hide();
+	$("#multi_selectBox").hide();
+	$("#dataSource").hide();
+	/**
+	 * 简单类型控件属性界面进行筛选操作
+	 */
+	$("#simple").click(function () {
+		$("#box").find("*").show();
+	    $(".typeWidget").eq(7).parent().hide();
+		$(".typeWidget").first().attr("checked", true);
+		$("#multi_selectBox").hide();
+		$("#dataSource").hide();
+	});
+	/**
+	 * autoComplete 对自动完成控件属性界面进行筛选操作
+	 */
+	$("#autoComplete").click(function () {
+		$("#box").find("*").show();
+		$(".typeWidget:not(:first)").parent().hide(300);
+		$(".typeWidget").eq(0).attr("checked", true);
+		$("#multi_selectBox").hide();
+	});
+    
+     /**
+      * dropdownList  下拉框控件属性界面进行筛选操作
+      */
+	$("#dropdownList").click(function () {
+		/**
+		 * 显示全部节点
+		 */
+		$("#box").find("*").show();
+		$(".typeWidget").parent().hide();
+		/**
+		 * 默认显示
+		 */
+		$(".typeWidget").first().parent().show(300);
+		$(".typeWidget").last().parent().show(300);
+		/**
+		 * 默认选中
+		 */
+		$(".typeWidget").first().attr("checked", true);
+		$("#only").attr("checked", true);
+	});
+}
+
+/**
+ * 创建option对象,传递控件属性
+ * @returns {Object} options 返回创建控件的option对象属性信息
+ * @type {Object}
+ */
+function createObject() {
+	      /**
+	       * 创建属性对象
+	       */
+		  var option = {};
+		  /**
+		   * 添加控件类型属性
+		   */
+		  if ($("#simple").is(":checked")) {
+			option.edit_type = 0;
+		  }
+		  if ($("#autoComplete").is(":checked")) {
+				option.edit_type = 1;
+		        var dataSource = getDataSource();
+				option.ItemList = dataSource;
+		  }
+		  if ($("#dropdownList").is(":checked")) {
+				option.edit_type = 2;
+		        var dataSource = getDataSource();
+				option.ItemList = dataSource;
+		  }
+		  /**
+		   * 数据类型属性创建
+		   */
+		  $(".typeWidget").each(function () {
+			if ($(this).is(":checked")) {
+					option.data_type = $(".typeWidget").index($(this));
+			}
+		  });
+		  /**
+		   * 创建是否多选属性
+		   */
+		  if ($("#only").is(":checked")) {
+				option.multi_select = false;
+		  }
+		  if ($("#more").is(":checked")) {
+				option.multi_select = true;
+		  }
+		  /**
+		   * 添加onChange  事件属性
+		   * @param {Object}  widget 为控件属性返回值
+		   */
+		  option.onChange = function (widget) {
+				obj.onChange = widget;
+				//alert(obj.onChange.getItemIndex());
+		  }
+		  /**
+		   * 添加onSelect 事件
+		   * @param {Object} widget  控件属性返回值
+		   */
+		  option.onSelected = function (widget) {
+				obj.onSelected = widget;
+			
+		  };
+		  if($("#place").val()!="")
+			  option.Placeholder = $("#place").val();
+		  if($("#default_value").val()!="")
+		      option.default_Value = $("#default_value").val();
+		  if($("#separator").val()!="")
+			  option.multi_select_comma = $("#separator").val();
+		  if($("#hintText").val()!="")
+		      option.hint = $("#hintText").val();
+		  return option;
+}
+
+/**
+ * 创建DataSoure数据源
+ * @type {Array}
+ * @returns {Array}  dataSource 数组内为多个Object对象
+ */
+function getDataSource() {
+		  var name = $(".name");
+		  var value = $(".value");
+		  var dataSource = [];
+		  for (var i = 0; i &lt; name.length; i++) {
+		if (name[i].value != "" &amp;&amp; value.value != "") {
+			var data = {};
+			data.name = name[i].value;
+			data.value = parseInt(value[i].value);
+			dataSource.push(data);
+		}
+		  }
+		  return dataSource;
+}
+
+/**
+ *  显示返回数据类型界面, 测试面板根据创建控件显示该控件能够有的返回方法(返回类型)
+ */
+function displayBackType(option) {
+	if(option.edit_type == 0 &amp;&amp; option.data_type!=3)
+	{
+		$(".backType").parent().hide();
+		$(".backType").eq(1).parent().show();
+	}
+	if(option.edit_type ==0 &amp;&amp; option.data_type==3)
+	{
+			$(".backType").parent().hide();
+			$(".backType").eq(5).parent().show();
+	}
+    if(option.edit_type ==1)
+	{
+		$(".backType").eq(2).parent().hide();
+		$(".backType").eq(4).parent().hide();
+		$(".backType").eq(5).parent().hide();
+	}
+	if(option.edit_type ==2 &amp;&amp; option.data_type ==0 &amp;&amp; option.multi_select ==false)
+	{
+		$(".backType").eq(2).parent().hide();
+		$(".backType").eq(4).parent().hide();
+		$(".backType").eq(5).parent().hide();
+	}
+	if(option.edit_type ==2 &amp;&amp; option.data_type ==0 &amp;&amp; option.multi_select ==true)
+	{
+		$(".backType").eq(3).parent().hide();
+		$(".backType").eq(5).parent().hide();		
+	}
+	if(option.edit_type == 2 &amp;&amp; option.data_type == 7 &amp;&amp; option.multi_select ==false)
+	{
+		$(".backType").eq(2).parent().hide();
+		$(".backType").eq(4).parent().hide();
+		$(".backType").eq(5).parent().hide();
+	}
+	if(option.edit_type == 2 &amp;&amp; option.data_type == 7 &amp;&amp; option.multi_select ==true)
+	{
+		
+		$(".backType").eq(3).parent().hide();
+		$(".backType").eq(5).parent().hide();		
+	}
+}
+
+/**
+ * getReturnTypeData  是一个接收控件返回值数据的测试方法,用于测试查看该控件以及方法的返回值
+ * @param {Object} obj    返回需要触发需要触发的事件对象
+ * @param {Object} index  根据单击选择需要返回的数据类型的索引
+ */
+function getReturnTypeData(eventAttr, index) {
+		  if (index == 0)
+		  alert(eventAttr.getValue());
+		  if (index == 1)
+		  alert(eventAttr.getText());
+          if(index == 2)
+	      alert(eventAttr.getItems());
+		  if (index == 3)
+		  alert(eventAttr.getItemIndex());
+		  if (index == 4)
+		  alert(eventAttr.getCheckedIndex());
+		  if (index == 5)
+		  alert(eventAttr.getIsChecked());
+}	
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="edit-edit.html">edit</a></li><li><a href="sjKeyMaster.html">sjKeyMaster</a></li></ul><h3>Global</h3><ul><li><a href="global.html#btnBox">btnBox</a></li><li><a href="global.html#call_back_sj_dict_show">call_back_sj_dict_show</a></li><li><a href="global.html#error">error</a></li><li><a href="global.html#filterData">filterData</a></li><li><a href="global.html#findRows">findRows</a></li><li><a href="global.html#function_name">function_name</a></li><li><a href="global.html#htmltemple">htmltemple</a></li><li><a href="global.html#invoke">invoke</a></li><li><a href="global.html#M_error">M_error</a></li><li><a href="global.html#M_log">M_log</a></li><li><a href="global.html#M_lost">M_lost</a></li><li><a href="global.html#PageRows">PageRows</a></li><li><a href="global.html#query_list">query_list</a></li><li><a href="global.html#RowIndex">RowIndex</a></li><li><a href="global.html#Serch">Serch</a></li><li><a href="global.html#sj_edit">sj_edit</a></li><li><a href="global.html#stacktrace">stacktrace</a></li><li><a href="global.html#trigger">trigger</a></li><li><a href="global.html#UrlParam">UrlParam</a></li><li><a href="global.html#UrlParam2">UrlParam2</a></li><li><a href="global.html#window_onerror">window_onerror</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 27 2016 17:04:38 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

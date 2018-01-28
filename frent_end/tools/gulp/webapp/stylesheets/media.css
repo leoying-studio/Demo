@@ -1,0 +1,105 @@
+@media screen and (min-width: 768px) {
+  .body > header .equipment .equipment-list:hover .left {
+    left: -33.333%;
+    width: 33.333%;
+    background-color: #191a20;
+  }
+  .body > header .equipment .equipment-list:hover .right {
+    background-color: #191a20;
+  }
+  .body > header .equipment .equipment-name {
+    display: inline;
+  }
+
+  .body > nav .main {
+    height: 100%;
+    width: 200px;
+  }
+  .body > nav .sub {
+    padding-left: 200px;
+  }
+  .body > nav .more-icon {
+    display: none;
+  }
+  .body > nav dl {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .body > nav .sub-wrap {
+    padding: 0 15px;
+  }
+  .body > nav .sub-wrap .search {
+    position: absolute;
+    right: 0;
+    top: 9px;
+    display: block;
+    width: 30%;
+  }
+  .body > nav .sub-wrap .out-notes {
+    display: inline-block;
+  }
+  .body > nav .sub-wrap .address-search {
+    width: 400px;
+  }
+  .body > nav .sub-list {
+    height: 63px;
+  }
+  .body > nav .sub-list:hover {
+    height: 63px;
+  }
+  .body > nav .sub-list .first i {
+    display: none;
+  }
+  .body > nav .sub-item {
+    border-bottom: 2px solid #383d44;
+  }
+  .body > nav .sub-item.selected {
+    border-bottom: 2px solid #1cf7ff;
+  }
+
+  .body > main .car-status {
+    text-align: center;
+  }
+
+  .body > main > section, .body > main > article {
+    padding-left: 200px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .body > header .equipment .equipment-list:hover .left {
+    left: -16.6666%;
+    width: 16.6666%;
+  }
+
+  .body > nav .booked {
+    line-height: 63px;
+  }
+  .body > nav .booked > span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+  }
+  .body > nav .booked .booked-count {
+    margin-left: 10px;
+    position: static;
+    left: auto;
+    font-size: 14px;
+    color: #1aeff7;
+  }
+  .body > nav .main {
+    height: 100%;
+    width: 20%;
+  }
+  .body > nav .main-wrap {
+    width: 200px;
+    margin: 0 0 0 auto;
+  }
+  .body > nav .sub {
+    padding-left: 20%;
+  }
+
+  .body > main > section, .body > main > article {
+    padding-left: 20%;
+  }
+}

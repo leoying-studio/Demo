@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.row {
+			display: flex;
+			height: 100px;
+		}
+		.row div {
+			flex: 1;
+		}
+		.row>:first-child {
+			background-color: #2AA1C5;
+		}
+		.row>:nth-child(2) {
+			background: #18D36B;
+		}
+		.row>:last-child {
+			background-color: #4072E6;
+		}
+	</style>
+</head>
+<body>	
+	  <div class="row"> 
+	  		<!-- 子容器不设置高度默认和父容器高度相同 -->
+	  		<div>
+	  			
+	  		</div>
+	  		<div>
+	  			
+	  		</div>
+	  		<div>
+	  			
+	  		</div>
+	  </div>
+</body>
+</html>

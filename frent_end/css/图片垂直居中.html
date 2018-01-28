@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css  图片垂直居中</title>
+	<link rel="stylesheet" href="lib/reset.css">
+	<style>
+		html,body {
+			width: 100%;
+			height: 100%;
+		}
+		.container {
+			display: table;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+		}
+		.container span {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.container span img {
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+    <!-- text-algin 对块级元素无效 -->
+	<div class="container">
+		<span>
+			<img src="img/1.jpg" alt="" width="250px" height="175px">
+		</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: htmlTemp.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: htmlTemp.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * [htmltemple HTMLDOM模板]
+ */
+var htmltemple = "\n\t\t&lt;div id=\"box\">\n\t\n\t\t\t&lt;ul>\n\t\t\t\t&lt;li>\n\t\t\t\t&lt;h5>\u63A7\u4EF6\u7C7B\u578B:&lt;/h5>\n\t\t\t\t&lt;div id=\"typeBox\">\n\t\t\t\t\t\t&lt;span>&lt;input type=\"radio\" class=\"type\" name=\"type\" id=\"simple\"/>\u7B80\u5355&lt;/span>\n\t\t\t\t\t\t&lt;span>&lt;input type=\"radio\" class=\"type\" name=\"type\" id=\"autoComplete\"/>\u81EA\u52A8\u5B8C\u6210&lt;/span>\n\t\t\t\t\t\t&lt;span>&lt;input type=\"radio\" class=\"type\" name=\"type\" id=\"dropdownList\"/>\u4E0B\u62C9\u5217\u8868&lt;/span>\n\t\t\t\t&lt;/div>\n\t\t\t&lt;li>\n\t\t\t&lt;li>\n\t\t\t\t&lt;h5>\u6570\u636E\u7C7B\u578B:&lt;/h5>\n\t\t\t\t&lt;ul id=\"typeList\">\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u6587\u672C&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u6574\u6570&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u5C0F\u6570&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u590D\u9009\u6846&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u65E5\u671F&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u65F6\u95F4&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u65E5\u671F\u65F6\u95F4&lt;/li>\n\t\t\t\t\t\t\t&lt;li>&lt;input type=\"radio\" class=\"typeWidget\" name=\"typeWidget\">\u540D\u79F0\u503C\u5BF9&lt;/li>\n\t\t\t\t&lt;/ul>\n\t\t\t&lt;/li>\n\t\t\t&lt;li id=\"multi_selectBox\">\n\t\t\t\t\t&lt;h5>\u662F\u5426\u591A\u9009:&lt;/h5>\n\t\t\t\t\t&lt;ul>\n\t\t\t\t\t\t&lt;li class=\"rad\">&lt;input type =\"radio\" id=\"more\" name=\"radio\"/>\u662F&lt;/li>\n\t\t\t\t\t\t&lt;li class=\"rad\" style=\"float:none;\">&lt;input type=\"radio\" id=\"only\" name=\"radio\"/>\u5426&lt;/li>\n\t\t\t\t\t&lt;/ul>\n\t\t\t&lt;/li>\n\t\t\n\t\t\t&lt;li>\n\t\t\t\t\t&lt;h5>\u63D0\u793A\u4FE1\u606F&lt;/h5>\n\t\t\t\t\t&lt;ul>\n\t\t\t\t\t\t\t&lt;li>\u63D0\u793A:&lt;input type=\"text\" id=\"hintText\" value=\"\"/>&lt;/li>\n\t\t\t\t\t&lt;/ul>\n\t\t\t&lt;/li>\n\t\t\t&lt;li id=\"symbolBox\">\n\t\t\t\t\t&lt;h5>\u5206\u5272\u7B26\u53F7&lt;/h5>\n\t\t\t\t\t&lt;ul>\n\t\t\t\t\t\t\t&lt;li>\u7B26\u53F7:&lt;input type=\"text\" id=\"separator\" value=\",\"/>&lt;/li>\n\t\t\t\t\t&lt;/ul>\n\t\t\t&lt;/li>\n\t\t\t&lt;li>\n\t\t\t\t\t&lt;h5>\u5360\u4F4D\u7B26\u53F7&lt;/h5>\n\t\t\t\t\t&lt;ul>\n\t\t\t\t\t\t\t&lt;li>\u5360\u4F4D:&lt;input type=\"text\" id=\"place\"  placeholder=\"\u8BF7\u8F93\u5165\u5185\u5BB9\" value=\"\u8BF7\u8F93\u5165\u5185\u5BB9\"/>&lt;/li>\n\t\t\t\t\t&lt;/ul>\n\t\t\t&lt;/li>\n\t\t\t&lt;li>\n\t\t\t\t\t&lt;h5>\u9ED8\u8BA4\u53D6\u503C&lt;/h5>\n\t\t\t\t\t&lt;ul>\n\t\t\t\t\t\t&lt;li>\u9ED8\u8BA4:&lt;input type=\"text\" id=\"default_value\" value=\"\">&lt;/li>\n\t\t\t\t\t&lt;/ul>\n\t\t\t&lt;/li>\n\t\t\t&lt;li id=\"dataSource\">\n\t\t\t\t\t&lt;h5>\u914D\u7F6E\u6570\u636E\u6E90&lt;/h5>\n\t\t\t\t\t&lt;ul>\n\t\t\t\t\t\t\t&lt;li>\n\t\t\t\t\t\t\t\t&lt;table id=\"table\">\n\t\t\t\t\t\t\t\t\t&lt;tr>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>\u540D\u79F0&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>\u503C&lt;/td>\n\t\t\t\t\t\t\t\t\t&lt;/tr>\n\t\t\t\t\t\t\t\t\t&lt;tr>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"name\" value=\"\u5434\u5B5F\u8FBE\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"value\" value=\"1\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;a href=\"#\" class=\"delete\" onClick=\"del(this);return false;\">\u5220\u9664&lt;/a>&lt;/td>\n\t\t\t\t\t\t\t\t\t&lt;/tr>\n\t\t\t\t\t\t\t\t\t&lt;tr>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"name\" value=\"\u90DD\u90B5\u6587\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"value\" value=\"2\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;a href=\"#\" class=\"delete\" onClick=\"del(this);return false;\">\u5220\u9664&lt;/a>&lt;/td>\n\t\t\t\t\t\t\t\t\t&lt;/tr>\n\t\t\t\t\t\t\t\t\t&lt;tr>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"name\" value=\"\u91CA\u5C0F\u9F99\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"value\" value=\"3\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;a href=\"#\" class=\"delete\" onClick=\"del(this);return false;\">\u5220\u9664&lt;/a>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t&lt;/tr>\n\t\t\t\t\t\t\t\t\t&lt;tr>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"name\" value=\"\u5F20\u536B\u5065\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;input type=\"text\" class=\"value\" value=\"4\"/>&lt;/td>\n\t\t\t\t\t\t\t\t\t\t\t&lt;td>&lt;a href=\"#\" class=\"delete\" onClick=\"del(this);return false;\">\u5220\u9664&lt;/a>&lt;/td>\n\t\t\t\t\t\t\t\t\t&lt;/tr>\n\t\t\t\t\t\t\t\t&lt;/table>\n\t\t\t\t\t\t\t&lt;/li>\n\t\t\t\t\t\t\t&lt;li>\n\t\t\t\t\t\t\t\t&lt;input type=\"button\" value=\"\u6DFB\u52A0\" id=\"addDataSource\" class=\"btn\"/>\n\t\t\t\t\t\t\t&lt;/li>\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/ul>\n\t\t\t\t&lt;/li>\n\t\t\t&lt;/ul>\n\t\t    &lt;div>&lt;input type =\"button\" value=\"\u521B\u5EFA\" id=\"create_Btn\" class=\"btn btn-large btn-info\">&lt;/div>\n    &lt;/div>\n\t&lt;div id=\"TestBox\" style=\"display:none;\">\n\t\t&lt;!--&lt;input type=\"button\" value=\"\u6D4B\u8BD5\" id=\"Test_btn\" disabled=\"true\"/>-->\n\t\t&lt;!--&lt;ul>\n\t\t\t&lt;li>&lt;h5>\u4E8B\u4EF6\u7C7B\u578B&lt;/h5>&lt;/li>\n\t\t\t&lt;ul>\n\t\t\t\t&lt;li>&lt;input type=\"radio\" name=\"event\" id=\"onchange\">\u6539\u53D8\u9009\u9879&lt;/li>\n\t\t\t\t&lt;li>&lt;input type=\"radio\" name=\"event\" id=\"onseleted\">\u9009\u4E2D\u9009\u9879&lt;/li>\n\t\t\t&lt;/ul>\n\t\t&lt;/ul>-->\n\t\t&lt;div id=\"returnListBox\" style=\"padding:15px;\">\n\t\t\t&lt;ul id=\"return_ul\">\n\t\t\t\t&lt;li>&lt;h5>\u8FD4\u56DE\u7C7B\u578B&lt;/h5>&lt;/li>\n\t\t\t\t&lt;ul>\n\t\t\t\t\t\t&lt;li>&lt;input type=\"button\" class=\"backType btn btn-info\" name=\"backType\" value=\"getValue\"/>getValue:string[]|string|name_value|name_value[]&lt;/li>\n\t\t\t\t\t\t&lt;li>&lt;input type=\"button\" class=\"backType btn btn-info\" name=\"backType\" value=\"getText\"/>getText:string&lt;/li>\n\t\t\t\t\t\t&lt;li>&lt;input type=\"button\" class=\"backType btn btn-info\" name=\"backType\" value=\"getItems\"/>getItems:string[] | name_value[]&lt;/li>\n\t\t\t\t\t\t&lt;li>&lt;input type=\"button\" class=\"backType btn btn-info\" name=\"backType\" value=\"getItemIndex\"/>getItemIndex:number&lt;/li>\n\t\t\t\t\t\t&lt;li>&lt;input type=\"button\" class=\"backType btn btn-info\" name=\"backType\" value=\"getCheckedIndex\"/>getCheckedIndex:number[]&lt;/li>\t\n\t\t\t\t\t\t&lt;li>&lt;input type=\"button\" class=\"backType btn btn-info\" name=\"backType\" value=\"getIsChecked\"/>getIsChecked:boolean&lt;/li>\n\t\t\t\t&lt;/ul>\n\t\t\t&lt;/ul>\n\t\t&lt;/div>\n\t\t\n\t&lt;/div>\n\t\n";
+//# sourceMappingURL=htmlTemp.js.map</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="edit-edit.html">edit</a></li><li><a href="sjKeyMaster.html">sjKeyMaster</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Wed Jul 27 2016 11:07:05 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

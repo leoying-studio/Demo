@@ -1,0 +1,601 @@
+body {
+  min-width: 360px;
+  background: #ededef;
+}
+
+i {
+  font-style: normal;
+}
+
+input {
+  font-family: Microsoft Yahei;
+}
+
+.addressSearch, .body > nav .sub-wrap .search, .body > nav .sub-wrap .address-search, .search > main .history .address-search, .info-window .comment {
+  display: none;
+  border-radius: 15px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #383d44;
+  height: 30px;
+  width: 70%;
+  margin: 10px 0 0 15%;
+  overflow: hidden;
+}
+.addressSearch input, .body > nav .sub-wrap .search input, .body > nav .sub-wrap .address-search input, .search > main .history .address-search input, .info-window .comment input {
+  outline: none;
+  background: none;
+  border: none;
+  vertical-align: middle;
+  min-width: 80px;
+  width: 80%;
+  height: 25px;
+  padding-left: 8px;
+  text-indent: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.addressSearch i, .body > nav .sub-wrap .search i, .body > nav .sub-wrap .address-search i, .search > main .history .address-search i, .info-window .comment i {
+  cursor: pointer;
+  float: right;
+  margin-top: 5px;
+  vertical-align: middle;
+  display: inline-block;
+  width: 21px;
+  height: 18px;
+  border-left: 1px solid #383D44;
+  background: url(../images/search.png) no-repeat 3px 50%;
+}
+
+.gradient-border-button {
+  display: inline-block;
+  height: 26px;
+  padding: 0 1px;cursor: pointer;
+  border-radius: 13px;
+  background-image: -webkit-linear-gradient(90deg, #1cf7ff, #ff1c7c);
+  background-image: -moz-linear-gradient(90deg, #1cf7ff, #ff1c7c);
+  background-image: -o-linear-gradient(90deg, #1cf7ff, #ff1c7c);
+  background-image: linear-gradient(90deg, #1cf7ff, #ff1c7c);
+}
+.gradient-border-button span {
+  float:left;
+  margin-top: 1px;
+  padding: 0 10px;
+  height: 24px;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #fff;
+}
+.gradient-border-button:hover{
+  background-image: -webkit-linear-gradient(90deg, #383d43, #383d43);
+  background-image: -moz-linear-gradient(90deg, #383d43, #383d43);
+  background-image: -o-linear-gradient(90deg, #383d43, #383d43);
+  background-image: linear-gradient(90deg, #383d43, #383d43);
+}
+.gradient-border-button:hover span{
+  background-color: #383d43;
+  color: #1bf8ff;
+}
+ 
+
+.body > header {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background-color: #22252c;
+}
+.body > header .bg {
+  height: 2px;
+  background-image: -webkit-linear-gradient(90deg, #1cf7ff, #ff1c7c);
+  background-image: -moz-linear-gradient(90deg, #1cf7ff, #ff1c7c);
+  background-image: -o-linear-gradient(90deg, #1cf7ff, #ff1c7c);
+  background-image: linear-gradient(90deg, #1cf7ff, #ff1c7c);
+}
+.body > header > div {
+  height: 45px;
+  line-height: 45px;
+}
+.body > header .user {
+  background-color: #191a20;
+}
+.body > header .user .user-avator {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 15px;
+}
+.body > header .user .user-avator img {
+  width: 100%;
+  height: 100%;
+}
+.body > header .user .user-name {
+  display: inline-block;
+  vertical-align: top;
+}
+.body > header .equipment {
+  font-size: 14px;
+}
+.body > header .equipment .equipment-list {
+  position: relative;
+  z-index: 3;
+}
+.body > header .equipment .equipment-list:hover .left {
+  display: block;
+  left: -100%;
+  width: 100%;
+}
+.body > header .equipment .left {
+  position: absolute;
+  display: none;
+  top: 0;
+  color: #1bc0c8;
+  text-align: center;
+  background-color: #191a20;
+}
+.body > header .equipment .left i {
+  display: none;
+  width: 56px;
+  height: 90px;
+  background: url(../images/equipment.png) no-repeat 50% 50%;
+}
+.body > header .equipment .left div {
+  font-size: 14px;
+}
+.body > header .equipment .right {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 45px;
+  overflow: hidden;
+  background-color: #22252c;
+}
+.body > header .equipment .equipment-item {
+  height: 45px;
+}
+.body > header .equipment .equipment-item span {
+  vertical-align: middle;
+}
+.body > header .equipment .equipment-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #ccc;
+}
+.body > header .equipment .equipment-name {
+  margin: 0 5px;
+  display: inline-block;
+  width: 60px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.body > header .equipment .equipment-status {
+  display: inline-block;
+  width: 50px;
+  border: 1px solid #1cf7ff;
+  text-align: center;
+  line-height: normal;
+  padding: 3px 0;
+}
+.body > header .loginlogout .logout {
+  float: right;
+  margin-right: 15px;
+}
+.body > header .loginlogout .logout a {
+  display: inline-block;
+  width: 50px;font-size: 12px;
+  background: url(../images/logout.png) no-repeat 100% 50%;
+}
+
+.body > nav {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+  left: 0;
+  top: 47px;
+  color: #fff;
+}
+.body > nav .main {
+  position: fixed;
+  z-index: 2;
+  height: 63px;
+  background: #383d44;
+}
+.body > nav .sub {
+  position: relative;
+  padding-left: 20%;
+  box-sizing: border-box;
+}
+.body > nav .booked {
+  text-align: center;
+  background: #191a20;
+  height: 63px;
+}
+.body > nav .booked span {
+  display: block;
+  font-size: 12px;
+  margin-top: 3px;
+}
+.body > nav .main-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 1px;
+}
+.body > nav .main-wrap:hover .more-icon {
+  background-image: url(../images/more2.png);
+}
+.body > nav .more-icon {
+  height: 63px;
+  background: url(../images/more.png) no-repeat 50% 50%;
+}
+.body > nav dl {
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  background: #383d44;
+  min-width: 120px;
+}
+.body > nav dl dd {
+  margin: 0;
+  text-indent: 40px;
+  padding: 25px 0;
+  border-top: 1px solid #464b53;
+}
+.body > nav dl dd.selected {
+  color: #1cf7ff;
+}
+.body > nav dl dd a {
+  color: #aeb2b5;
+  text-decoration: none;
+}
+.body > nav dl .car {
+  background: url(../images/car.png) no-repeat 10px 50%;
+  border: none;
+}
+.body > nav dl .car.selected {
+  background: url(../images/car2.png) no-repeat 40px 10px;
+  padding-top: 54px;
+}
+.body > nav dl .shop {
+  background: url(../images/shop.png) no-repeat 10px 50%;
+}
+.body > nav dl .shop.selected {
+  background: url(../images/shop2.png) no-repeat 50px 10px;
+  padding-top: 71px;
+}
+.body > nav dl .orders {
+  background: url(../images/orders.png) no-repeat 10px 50%;
+}
+.body > nav dl .orders.selected {
+  background: url(../images/orders2.png) no-repeat 40px 10px;
+  padding-top: 68px;
+}
+.body > nav .sub-wrap {
+  background-color: #d0d1d3;
+  height: 63px;
+  color: #21252b;
+}
+.body > nav .sub-wrap > span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 20px;
+}
+.body > nav .sub-wrap .out-notes {
+  display: none;
+  margin-right: 10px;
+}
+.body > nav .sub-wrap .address-book {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: url(../images/address-book.png) no-repeat 50% 50%;
+}
+.body > nav .sub-wrap .address-search {
+  display: inline-block;
+  width: 80%;
+  margin: 20px  0 0 0;
+  text-align: left;
+}
+.body > nav .sub-list {
+  position: absolute;
+  z-index: 2;
+  height: 61px;
+  width: 100%;
+  background-color: #d0d1d3;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  overflow: hidden;
+}
+.body > nav .sub-list .first i {
+  position: absolute;
+  left: 50%;
+  top: 23px;
+  width: 20px;
+  height: 20px;
+  margin-left: 30px;
+  background: url(../images/down.png) no-repeat 50% 50%;
+}
+.body > nav .sub-item {
+  text-align: center;
+  line-height: 61px;
+  cursor: pointer;
+}
+.body > nav .booked-count {
+  position: relative;
+  left: 50%;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 0 0 -13px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #1cf7ff;
+}
+
+.body > main {
+  margin-top: 110px;
+  background-color: #ededee;
+  padding: 15px 0;
+}
+.body > main section header {
+  margin-top: 10px;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+  font-size: 20px;
+}
+.body > main section header a {
+  cursor: pointer;
+  position: absolute;
+  right: 8%;display: none;
+  background: url(../images/more3.png) no-repeat 0 50%;
+  text-indent: 20px;
+  font-size: 14px;
+}
+.body > main section header:after {
+  content: "";
+  position: relative;
+  left: 50%;
+  margin-left: -15px;
+  display: block;
+  width: 30px;
+  height: 2px;
+  background-color: #4d525a;
+}
+.body > main .app {
+  margin-top: 20px;
+}
+.body > main .app .app-pic {
+  text-align: center;
+}
+.body > main .app .app-pic a {
+  display: inline-block;
+  width: 126px;
+  height: 126px;
+  background-color: #ccc;
+  overflow: hidden;
+}
+.body > main .app .app-pic img {
+  width: 100%;
+  height: 100%;
+}
+.body > main .app .app-name {
+  height: 52px;
+  line-height: 52px;
+  text-align: center;
+}
+.body > main .app .app-name a{
+  color: #383d43;
+  text-decoration: none;
+}
+.body > main .app .app-action {
+  text-align: center;
+  padding: 5px 0;
+}
+.body > main .app .app-action a {
+  cursor: pointer;
+}
+.body > main .app-detail > header, .body > main .app-detail > div.app-info-item {
+  padding: 20px 40px;
+}
+.body > main .app-detail .app-pic span {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #ccc;
+}
+.body > main .app-detail .app-abbr .app-desc {
+  font-size: 13px;
+  padding: 5px 0 15px 0;
+}
+.body > main .app-detail .app-info-item .title {
+  background: url(../images/appinfoitem.png) no-repeat 60px 50%;
+  font-size: 18px;
+}
+.body > main .app-detail .app-info-item .content {
+  line-height: 30px;
+  font-size: 13px;
+}
+.body > main .main-wrap {
+  padding: 0 15px;
+}
+.body > main #map {
+  height: 300px;
+}
+.body > main .car-status {
+  text-align: left;
+  padding-top: 15px;
+}
+.body > main .car-status-title {
+  border-bottom: 1px solid #383d44;
+  padding: 3px 0;
+}
+.body > main .scan-car {
+  float: right;
+  border: 1px solid #383d44;
+  padding: 3px 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.body > main .history {
+  display: none;
+}
+
+.search {
+  height: 100%;
+  overflow: hidden;
+}
+.search > nav .sub {
+  display: none;
+}
+.search > main {
+  height: 100%;
+  box-sizing: border-box;
+  margin-top: 47px;
+  padding: 0;
+}
+.search > main section {
+  height: 100%;
+}
+.search > main .main-wrap {
+  position: relative;
+  padding: 0;
+  height: 100%;
+}
+.search > main .car-status {
+  display: none;
+}
+.search > main #map {
+  height: 100%;
+}
+.search > main .history {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 320px;
+}
+.search > main .history ul {
+  height: 44px;
+}
+.search > main .history ul li {
+  float: left;
+  width: 50%;
+  cursor: pointer;
+}
+.search > main .history ul .out div {
+  background-image: url(../images/out.png);
+}
+.search > main .history ul .address div {
+  background-image: url(../images/address-book.png);
+}
+.search > main .history ul div {
+  height: 40px;
+  line-height: 40px;
+  background-color: #ededee;
+  text-align: center;
+  border: 2px solid #ededee;
+  background-position: 20px 50%;
+  background-repeat: no-repeat;
+}
+.search > main .history ul .selected div {
+  border: 2px solid #1cf7ff;
+  border-bottom-color: #fff;
+  padding-bottom: 2px;
+  background-color: #fff;
+}
+.search > main .history > div {
+  border: 2px solid #1cf7ff;
+  background-color: #fff;
+}
+.search > main .history .address-search {
+  display: block;
+  margin: 10px auto;
+}
+.search > main .history .address-item {
+  height: 40px;
+  padding: 10px 0;
+}
+.search > main .history .address-item .address-item-icon {
+  float: left;
+  width: 50px;
+  height: 100%;
+  background: url(../images/marker.png) no-repeat 50% 50%;
+  color: #000;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+}
+.search > main .history .address-item .address-item-content {
+  float: left;
+  width: 266px;
+  height: 100%;
+  font-size: 13px;
+}
+.search > main .history .address-item .address-item-content > div:first-child {
+  font-size: 14px;
+}
+
+.poi-marker {
+  width: 23px;
+  height: 35px;
+  line-height: 25px;
+  text-align: center;
+  background: url(../images/marker.png) no-repeat;
+}
+
+.info-window {
+  width: 280px;
+  height: 120px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #1cf7ff;
+  background-color: #fff;
+}
+.info-window .close {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../images/close.png) no-repeat 50% 50%;
+  cursor: pointer;
+  float: right;
+}
+.info-window .title {
+  font-size: 14px;
+}
+.info-window .content {
+  font-size: 13px;
+  padding: 5px 0;
+}
+.info-window .comment {
+  display: block;
+  margin: 10px auto;
+  width: 230px;
+}
+.info-window .comment i {
+  width: 40px;
+  background: url(../images/send2car.png) no-repeat 50% 50%;
+}

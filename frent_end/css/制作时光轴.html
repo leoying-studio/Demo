@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    * {
+	    	margin:0;
+	    	padding: 0;
+	    }
+	    body {
+	    	background: #ccc;
+	    }
+	    .item {
+	    	width: 800px;
+	    	margin:100px auto;
+	    }
+		.line {
+			width: 6px;
+			background: #fff;
+			height: 100px;
+			position: relative;
+		}
+		.line::after {
+			display: block;
+			content: "";
+			width: 15px;
+			height: 15px;
+			border-radius:100%;
+			position: absolute;
+			top: -10px;
+			left: -4.5px;
+			background: #fff;
+		}
+		.desc {
+			position: absolute;
+			width: 200px;
+			margin-left: 100px;
+		}
+	</style>
+</head>
+<body>
+    	  <div class="item">
+    	  		<div class="line">
+    	  			<div class="desc">
+    	  				<h2>这里是标题</h2>
+    	  			 	<p>介绍信息文字的</p>
+    	  			</div>
+    	  		</div>
+    	  		<div class="line">
+    	  			<div class="desc">
+    	  				<h2>这里是标题</h2>
+    	  			 	<p>介绍信息文字的</p>
+    	  			</div>
+    	  		</div>
+    	       	<div class="line">
+    	  			<div class="desc">
+    	  				<h2>这里是标题</h2>
+    	  			 	<p>介绍信息文字的</p>
+    	  			</div>
+    	  		</div>
+    	  		<div class="line">
+    	  			<div class="desc">
+    	  				<h2>这里是标题</h2>
+    	  			 	<p>介绍信息文字的</p>
+    	  			</div>
+    	  		</div>
+    	  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex中的flex-wrap 和 flex-flow</title>
+	<style>
+		.row {
+			display: flex;
+			flex-flow: row-reverse wrap;
+			justify-content: space-around;
+		}
+		.row .item {
+			background: red;
+		}
+		.row2 {
+			display: flex;
+			flex-flow: row-reverse wrap-reverse;
+			justify-content: space-around;
+		}
+		.row2 .item {
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+		<div class="row">
+			<div class="item">这是第一个盒子模型</div>	
+			<div class="item">这是第二个盒子模型</div>
+			<div class="item">这是第三个盒子模型</div>
+			<div class="item">这是第四个盒子模型</div>	
+			<div class="item">这是第五个盒子模型</div>
+			<div class="item">这是第六个盒子模型</div>
+		</div>
+
+		<div class="row2">
+			<div class="item">这是第一个盒子模型</div>	
+			<div class="item">这是第二个盒子模型</div>
+			<div class="item">这是第三个盒子模型</div>
+			<div class="item">这是第四个盒子模型</div>	
+			<div class="item">这是第五个盒子模型</div>
+			<div class="item">这是第六个盒子模型</div>
+		</div>
+</body>
+</html>
