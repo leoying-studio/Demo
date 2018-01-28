@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    * {
+	    	padding: 0;
+	    	margin: 0;
+	    }
+		.tab {
+
+		}
+		.tab .tab-bar {
+			display: flex;
+			padding: 15px 0;
+			border-bottom: solid 1px #e3e3e3;
+			position: relative;
+			font-size: 18px;
+		}
+		.tab .tab-bar .active-line {
+			position: absolute;
+			width: 36px;
+			height: 2px;
+			bottom: 0;
+			background-color: #35C2FC;
+			z-index: 2;
+		}
+		.tab .tab-bar div:not(:last-child){
+			flex: 1;
+			text-align: center;
+			cursor: default;
+		}
+		.hide {
+			display: none;
+		}
+		.active {
+			color: #35C2FC;
+		}
+		.show {
+			display: block;
+		};
+	</style>
+</head>
+<body>
+	 <div class="tab" id="tab">
+	 	<header class="tab-bar">
+	 		<div>首页</div>
+	 		<div>新闻</div>
+	 		<div>综合</div>
+	 		<div class="active-line"></div>
+	 	</header>
+	 	<section class="tab-section">
+	 		<h1>这是tab1</h1>
+	 	</section>
+	 	<section class="tab-section">
+	 		<h1>这是tab2</h1>
+	 	</section>
+	 	<section class="tab-section">
+	 		<h1>这是tab3</h1>
+	 	</section>
+	 </div>
+</body>
+	 <script>
+	 	  // 今天尝试自己动手写一个  tab切换滚动的组件，写的比较low,
+	 	  // 主要是因为代码没有整理，随便写的，练习一下。
+	 	 // 仅仅显示第一个section
+	 	 var tabSections = document.getElementsByClassName('tab-section');
+	 	 function hideAll() {
+	 	 	[].slice.call(tabSections).forEach( (section, index) => {
+		 	 	section.style.display="none";
+	 	 	});
+	 	 }
+	 	 hideAll();
+
+	 	 // 注册点击事件
+	 	 var tabBar = document.querySelectorAll("#tab div:not(:last-child)");
+	 	 tabBar.forEach( (bar, index) => {
+	 	 	if (index === 0) {
+	 	 		bar.classList.add('active');
+	 	 	}
+	 	 	bar.index = index;
+	 	 	bar.onclick = function(e) {
+
+	 	 		var x = this.offsetLeft;
+	 	 		var width = this.offsetWidth;
+	 	 		x = Math.floor(width / 2) + x - 18;
+	 	 		document.querySelector('.active-line').style = "transform: translateX("+ x + "px);transition: all 0.5s";
+	 	 		hideAll();
+	 	 		var index = this.index;
+	 	 		tabSections[index].style.display="block";
+	 	 		document.querySelector('.active').classList.remove('active');
+	 	 		tabBar[index].classList.add('active');
+	 	 	}
+	 	 });
+	 	 tabSections[0].style.display="block";
+	 	 var left = tabBar[0].offsetLeft;
+	 	 left = tabBar[0].offsetWidth / 2 + left - 18;
+	 	 document.querySelector('.active-line').style = "transform: translateX("+ left + "px);";
+	 </script>
+</html>
