@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person() {
+			this.name = '张三';
+			this.age = 28;
+		}
+
+		Person.prototype.sayHello = function() {
+			console.log('会说话');
+		}
+
+		Person.prototype.eat = function() {
+			console.log('会吃饭');
+		}
+
+		function Parent() {
+			this.id = 1;
+		};
+		Parent.prototype = Person.prototype;
+		Parent.prototype.work = function() {};
+		Parent.prototype.constructor = Parent;
+
+		function Children() {
+
+		}
+		Children.prototype = Parent.prototype;
+		Children.prototype.playGame = function() {
+			console.log('play game');
+		}
+		Children.prototype.constructor = Children;
+
+		//  继承完了, 开始制造一个children
+		var children = new Children();
+		console.log(children);
+	</script>
+</body>
+</html>
