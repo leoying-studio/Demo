@@ -22,11 +22,14 @@ Component({
   data: {
 
   },
-
   /**
    * 组件的方法列表
    */
   methods: {
-
+    goToDetail() {
+      wx.navigateTo({
+         url: '../detail/index?params=1'
+      });
+    }
   }
 })

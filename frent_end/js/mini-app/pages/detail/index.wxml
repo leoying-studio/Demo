@@ -1,0 +1,4 @@
+<!--pages/detail/index.wxml-->
+<view>
+   <text>这是详情页面</text>
+</view>

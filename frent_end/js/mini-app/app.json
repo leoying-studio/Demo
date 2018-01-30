@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/me/index"
+    "pages/me/index",
+    "pages/detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,9 +13,8 @@
   "tabBar": {
     "color": "#ccc",
     "selectedColor": "#35495e",
-    "borderStyle": "white",
-    "backgroundColor": "#f9f9f9",
     "borderStyle": "black",
+    "backgroundColor": "#f9f9f9",
     "list": [
       {
         "text": "首页",
