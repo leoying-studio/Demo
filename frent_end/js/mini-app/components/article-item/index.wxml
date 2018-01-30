@@ -1,0 +1,18 @@
+<view class='article-item'>
+    <view class='header'>
+        <text>{{data.title}}</text>
+    </view>
+    <view class='body'>
+        <image class='image' mode="aspectFill"  wx:if="{{data.body.type == 'img'}}" src="{{data.body.content}}"></image> 
+        <text wx:else>{{data.body.content}}</text>
+    </view>
+    <view class='footer'>
+        <image mode="aspectFill" class='icon' src="{{data.footer.icon}}"></image>
+        <view class='right'>
+            <view class='tags'>
+              <tag wx:for="{{data.footer.tags}}" wx:key="{{index}}">{{item.tag}}</tag>
+            </view>
+            <text class='look'>去查看</text> 
+        </view>
+    </view>
+</view>

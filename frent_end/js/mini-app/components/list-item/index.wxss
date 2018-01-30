@@ -1,0 +1,7 @@
+/* components/list-item/index.wxss */
+.list-item {
+  display: flex;
+  align-items: center;
+  min-height: 80rpx;
+  border-bottom: solid 1px #ccc;
+}

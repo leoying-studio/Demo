@@ -1,65 +1,9 @@
-/**app.wxss**/
+/*inedx  */
 .container {
-  /* height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box; */
-} 
-
-.header {
-  display: flex;
-  flex-direction: row;
-  padding: 0 5pt;
-  height: 35px;
-  align-items: center;
+  background-color: #f7f7f7;
 }
 
-.header label {
-  flex: 1;
-}
-
-.header button {
-   flex: 1;
-   margin-left: 5pt;
-}
-
-.header input {
-  flex: 3;
-  height: 90%;
-  border: 1pt solid #e3e3e3;
-  margin-left: 6pt;
-  padding: 8pt 8pt;
-  box-sizing: border-box;
-  border-radius: 15pt;
-}
-
-.body {
-  min-height: 150pt;
-}
-
-.scroll-view {
-   height: 200px;
-}
-
-.row {
-   display: flex;
-   width: 100%;
-   padding: 2px 12px;
-   box-sizing: border-box;
-   justify-content: space-between;
-   background: #e3e3e3;
-}
-
-.footer {
-   width: 100%;
-   text-align: center;
-   height: 30pt;
-   line-height: 30pt;
-   position: fixed;
-   bottom: 0;
-   background-color: blanchedalmond;
-   color: cadetblue;
+.container .item-wrapper {
+  margin-bottom: 15px;
+  background-color: white;
 }

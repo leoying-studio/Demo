@@ -1,0 +1,5 @@
+/* components/tabs/index.wxss */
+.tab-wrapper {
+   width: 200%;
+   display: flex;
+}

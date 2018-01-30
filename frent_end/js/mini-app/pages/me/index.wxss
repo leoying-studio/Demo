@@ -1,0 +1,4 @@
+/* pages/me/index.wxss */
+.me {
+  padding: 0 25rpx;
+}

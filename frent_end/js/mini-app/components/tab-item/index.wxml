@@ -1,0 +1,4 @@
+<!--components/tab-item/tab-item.wxml-->
+<view class='tab-item'>
+  <slot></slot>
+</view>

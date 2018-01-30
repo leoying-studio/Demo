@@ -1,0 +1,16 @@
+<!--components/form/index.wxml-->
+<view class='form-container'>
+   <form class='form'>
+       <view class='form-item'>
+          <label>用户名:</label>
+          <input placeholder='请输入用户名'></input>
+       </view>
+       <view class='form-item'>
+          <label>密码：</label>
+          <input placeholder='请输入密码'></input>
+       </view>
+       <view class='form-item'>
+          <button type='primary'>提交</button>
+       </view>
+   </form>
+</view>

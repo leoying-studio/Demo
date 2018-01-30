@@ -1,0 +1,4 @@
+<!--components/list-item/index.wxml-->
+<view class='list-item'>
+    <slot></slot>
+</view>

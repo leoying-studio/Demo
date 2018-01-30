@@ -1,0 +1,4 @@
+<!--components/tag/index.wxml-->
+<text class='tag'>
+  <slot></slot>
+</text>

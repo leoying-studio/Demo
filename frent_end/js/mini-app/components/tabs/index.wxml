@@ -1,0 +1,8 @@
+<!--components/tabs/index.wxml-->
+<view class='tabs'>
+    <scroll-view scroll-x>
+      <view class='tab-wrapper'>
+        <slot></slot>
+      </view>
+    </scroll-view>
+</view>

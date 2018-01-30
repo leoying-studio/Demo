@@ -1,19 +1,4 @@
 <!--index.wxml-->
 <view class="container">
-   <view class='header'>
-       <label>输入</label>
-       <input type='text' bindinput="searching"/>
-       <button size='mini' type="primary" bindtap='add'>添加</button>
-   </view>
-   <view class='body'>
-      <scroll-view scroll-y="{{true}}" style="height: 525px;">
-          <view class='row' wx:for='{{filters}}' wx:key="{{index}}"  wx:for-index="index" data-index="{{index}}">
-             <text>{{item.content}}</text>
-             <text bindtap="del"  data-index="{{index}}">删除</text>
-          </view>
-      </scroll-view>
-   </view>
-   <view class='footer'>
-        <text>当前时间: {{currentTime}}</text>
-   </view>
+    <article-item view wx:for="{{homeData}}" data="{{item}}" wx:key="{{index}}"/>
 </view>
