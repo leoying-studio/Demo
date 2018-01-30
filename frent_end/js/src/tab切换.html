@@ -52,6 +52,9 @@
 	 	</header>
 	 	<section class="tab-section">
 	 		<h1>这是tab1</h1>
+			<article>
+				<div>个啊文化</div>
+			</article>
 	 	</section>
 	 	<section class="tab-section">
 	 		<h1>这是tab2</h1>
@@ -62,8 +65,7 @@
 	 </div>
 </body>
 	 <script>
-	 	  // 今天尝试自己动手写一个  tab切换滚动的组件，写的比较low,
-	 	  // 主要是因为代码没有整理，随便写的，练习一下。
+
 	 	 // 仅仅显示第一个section
 	 	 var tabSections = document.getElementsByClassName('tab-section');
 	 	 function hideAll() {
@@ -85,7 +87,7 @@
 	 	 		var x = this.offsetLeft;
 	 	 		var width = this.offsetWidth;
 	 	 		x = Math.floor(width / 2) + x - 18;
-	 	 		document.querySelector('.active-line').style = "transform: translateX("+ x + "px);transition: all 0.5s";
+	 	 		document.querySelector('.active-line').style = "transform: translateX("+ x + "px);transition: all 0.2s";
 	 	 		hideAll();
 	 	 		var index = this.index;
 	 	 		tabSections[index].style.display="block";

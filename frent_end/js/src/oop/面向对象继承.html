@@ -22,14 +22,14 @@
 		function Parent() {
 			this.id = 1;
 		};
-		Parent.prototype = Person.prototype;
+		Parent.prototype = Person;
 		Parent.prototype.work = function() {};
 		Parent.prototype.constructor = Parent;
 
 		function Children() {
 
 		}
-		Children.prototype = Parent.prototype;
+		Children.prototype = Parent;
 		Children.prototype.playGame = function() {
 			console.log('play game');
 		}

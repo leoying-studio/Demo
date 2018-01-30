@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta Charset="UTF-8">
+	<title>symbol(符号)</title>
+  </head>
+  <body>
+	 <script>
+		var symbol = Symbol('张三');
+		console.log(symbol);
+		console.log(symbol.toString());
+		
+		
+		var obj = {
+			name: '张三',
+			toString() {
+				return this.name;
+			},
+		};
+		// 会自动调用这个对象里面的 toString 方法
+		console.log(Symbol(obj));
+		
+		var sharpType = {
+			triangle: Symbol('triangle'),
+			circle: Symbol('triangle')
+		};
+		// 保证了属性值的唯一性
+		console.log(sharpType.triangle === sharpType.circle);
+		
+		// 获取key, 前提key 是Symbols 类型
+		const last = Symbol('last');
+		const o = {
+		   [symbol]: 'first',
+		   [last]: 'last'
+		};
+		var st = Object.getOwnPropertySymbols(o);
+		console.log(st);
+		
+		// Symbol.for()与Symbol()这两种写法，都会生成新的 Symbol。它们的区别是，前者会被登记在全局环境中供搜索，后者不会。
+		// Symbol.for()不会每次调用就返回一个新的 Symbol 类型的值，而是会先检查给定的key是否已经存在，如果不存在才会新建一个值。
+		// 比如，如果你调用Symbol.for("cat")30 次，每次都会返回同一个 Symbol 值，但是调用Symbol("cat")30 次，会返回 30 个不同的 Symbol 值。
+		Symbol.for("bar") === Symbol.for("bar") // true
+		Symbol() === Symbol();  // false;
+		
+		
+	 </script>
+  </body>
+</html>
