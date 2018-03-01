@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+		<script>
+			function Factory() {}
+
+			Factory.prototype.sayHello = function() {
+				return this.name;
+			}
+
+			Factory.create = function(name) {
+				if (typeof Factory[name] !== 'function') {
+					throw new Error('方法不存在');
+				}
+
+				// 继承方法
+				Factory[name].prototype = Factory.prototype;
+				Factory[name].prototype.constructor = Factory[name];
+
+				return new Factory[name]();
+			}
+
+			Factory.say = function() {
+				this.name = "张三";
+			}
+
+			Factory.eating = function() {
+				this.name = "吃东西";
+			}
+
+
+			// 开始调用
+			let f1 = Factory.create('say');
+			console.log(f1.sayHello());  // 张三
+			let f2 = Factory.create('eating');
+			console.log(f2.sayHello());  // 吃东西
+		</script>
+</body>
+</html>

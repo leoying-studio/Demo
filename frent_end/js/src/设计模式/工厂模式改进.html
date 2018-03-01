@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 依据个人的理解 -->
+	<script>
+		/**
+	 	 * 鸭式辨形约定接口
+	 	 */
+	 	function Interface(name, methods) {
+	 		this.name = name;
+	 		// 这里只是为了检测传入的是不是字符串, 我觉得没有必要再去push新数组
+	 		// 反而只是徒劳增加理解难度.
+	 		for (var k = 0; k < methods.length; k++) {
+	 			if (typeof methods[k] !== "string") {
+	 				throw new Error("method 需要string类型");
+	 			}
+	 		}
+	 		this.methods = methods;
+	 	}
+
+	 	// 枚举检查
+	 	Interface.enumImplements = function(object, interfaces) {
+	 		for (var i = 0; i < interfaces.length; i++) {
+	 			var interface = interfaces[i];
+	 			for (var j = 0; j < interface.methods.length; j++) {
+	 				if (!object[interface.methods[j]] || typeof object[interface.methods[j]] !== 'function') {
+	 					// 直接抛出异常
+	 					throw new Error(interface.methods[j]+"方法未实现或者类型错误");
+	 				}
+	 			}
+	 		}
+	 	}
+
+	 	var people = new Interface('People', ['sayHello', 'eat', 'drink']);
+	 	var People = function() {};
+	 	People.prototype = {
+	 		sayHello: function() {
+
+	 		},
+	 		eat: function() {
+
+	 		}
+	 	};
+	 	// 用该工具传入  对象和接口进行核对
+	 	Interface.enumImplements(new People(), [people]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script>
+			function Model() {
+				var instance = this;
+				this.name = '张三';
+				// 重写构造函数
+				Model = function() {
+					return instance;
+				}
+				// 因为重写了构造函数，constructor 还是指向了老的构造函数,且实例化后在添加原型属性也是不一样的
+				Model.prototype =  this;
+			}
+
+			var m1 = new Model();
+			var m2 = new Model();
+			console.log(m1 === m2); // true
+			
+		</script>
+</body>
+</html>

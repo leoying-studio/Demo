@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 复杂工厂模式
+		var Person = function() {
+
+		}
+
+		Person.prototype.shop = function(name) {
+			console.log("您购买了："+name);
+		}
+
+		var extend = function(parent, child) {
+			var F = function() {};
+			F.prototype = parent.prototype;
+			child.prototype = new F();
+			child.prototype.constructor = child;
+		}
+
+		// 继承
+		var children = function() {};
+		extend(Person, children);
+		children.prototype.shoping = function(name) {
+			this.shop(name);
+		}
+
+		var child = new children();
+		child.shoping("炸鸡");
+		child.shoping("可乐");
+	</script>
+</body>
+</html>

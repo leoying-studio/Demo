@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 简单工厂模式
+		var Factory = (function(val) {
+			function Cat() {
+				this.name = "cat";
+			}
+
+			function Dog() {
+				this.name = "dog";
+			}
+
+			function Pig() {
+				this.name = "pig"
+			};
+
+			return function() {
+				switch(val) {
+					case 'cat':
+						return new Cat();
+					case 'dog':
+						return new Dog();
+					case 'pig':
+						return new Pig();
+				}
+			}
+		});
+
+		var dog = new Factory('dog')();
+		console.log(dog);
+		var pig = new Factory('pig')();
+		console.log(pig);
+	</script>
+</body>
+</html>

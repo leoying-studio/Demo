@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/**
+	 	 * 鸭式辨形约定接口
+	 	 */
+	 	function Interface(name, methods) {
+	 		this.name = name;
+	 		// 这里只是为了检测传入的是不是字符串, 我觉得没有必要再去push新数组
+	 		// 反而只是徒劳增加理解难度.
+	 		for (var k = 0; k < methods.length; k++) {
+	 			if (typeof methods[k] !== "string") {
+	 				throw new Error("method 需要string类型");
+	 			}
+	 		}
+	 		this.methods = methods;
+	 	}
+
+	 	// 枚举检查
+	 	Interface.enumImplements = function(object, interfaces) {
+	 		for (var i = 0; i < interfaces.length; i++) {
+	 			var interface = interfaces[i];
+	 			for (var j = 0; j < interface.methods.length; j++) {
+	 				if (!object[interface.methods[j]] || typeof object[interface.methods[j]] !== 'function') {
+	 					// 直接抛出异常
+	 					throw new Error(interface.methods[j]+"方法未实现或者类型错误");
+	 				}
+	 			}
+	 		}
+	 	}
+
+	 	function extend(parent, child) {
+	 		child.prototype = new parent();
+	 		child.prototype.constructor = child;
+	 	}	
+
+
+	 	// 组合模式
+	 	function Combination(root) {
+	 		this.element = null;
+	 		this.parent = null;
+	 		this.root = document.body;
+	 	}
+
+	 	Combination.prototype = {
+	 		add: function() {
+	 			throw new Error("重写add");
+	 		},
+	 		getElement: function() {
+	 			throw new Error("重写getElement");
+	 		},
+	 		init: function() {
+	 			throw new Error("重写init方法");
+	 		}
+	 	};
+
+	 	var Container = function(name) {
+			this.init(name);
+	 	}
+
+	 	extend(Combination, Container);
+
+	 	Container.prototype.add = function(element) {
+	 		this.parent.appendChild(element.getElement());
+	 		return this;
+	 	}
+
+	 	Container.prototype.getElement = function() {
+	 		return this.element;
+	 	}
+
+	 	Container.prototype.init = function(name) {
+	 		this.element = document.createElement(name);
+	 		if (!this.parent) {
+	 			this.root.appendChild(this.getElement());
+	 			this.parent = this.getElement();
+	 		} else {
+	 			this.parent.appendChild(this.getElement());
+	 		}
+	 	}
+
+	 	var Widget = function(name, attr) {
+	 		this.init(name, attr);
+	 	}
+
+	 	extend(Combination, Widget);
+
+	 	Widget.prototype.getElement = function() {
+	 		return this.element;
+	 	}
+
+	 	Widget.prototype.add = function() {
+	 		console.log('缺省');
+	 	}
+
+	 	Widget.prototype.init = function(name, attr) {
+	 		this.element = document.createElement(name || 'input');
+	 		attr = attr || {};
+	 		for (var key in attr) {
+	 			this.element.setAttribute(key, attr[key]);
+	 			this.element[key] = attr[key];
+	 		}
+	 	}	
+
+	 	// 验证接口
+	 	var interface = new Interface('Combination', ['add', 'getElement', 'init']);
+	 	var root = new Container('div');
+
+	 	Interface.enumImplements(root, [interface]);
+
+	 	// 组合模式调用
+	 	/**
+	 	 * 创建一个表单
+	 	 */
+		root.add(
+			new Container('form').add(
+				new Container('div').add(
+					new	Widget('label', {innerText: '用户名:'})
+				).add(new Widget('input'))
+
+			).add(
+
+				new Container('div').add(
+					new	Widget('label', {innerText: '密码项:'})
+				).add(new Widget('input'))
+			).add (
+				new Container('div').add(
+					new	Widget('button', {innerText: '提交:'})
+				)
+			)
+		)
+	</script>
+</body>
+</html>
