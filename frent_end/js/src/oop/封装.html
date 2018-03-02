@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	  <script>
+	  	  // 对象封装
+	  	  var categories = {
+	  	  	 fruits: function() {
+	  	  	 	console.log('水果');
+	  	  	 },
+	  	  	 bumf: function() {
+	  	  	 	console.log("纸类");
+	  	  	 }
+	  	  };
+
+
+	  	  // 函数封装
+	  	  var People = (function() {
+	  	  	  var _message = 'hello world';
+	  	  	  return {
+	  	  	  	 eat: function() {
+	  	  	  	 	console.log('吃');
+	  	  	  	 },
+	  	  	  	 drink: function() {
+	  	  	  	 	console.log('喝');
+	  	  	  	 },
+	  	  	  	 sayHello: function() {
+	  	  	  	 	return _message;
+	  	  	  	 }
+	  	  	  };
+	  	  });
+
+	  	  People().eat();
+	  	  var message = People().sayHello();
+	  	  console.log(message);  //   hello world
+
+	  	  // 函数自调用封装
+	  	  var Person = (function() {
+	  	  	 var _message = 'hello world';
+	  	  	 return {
+	  	  	 	eat: function() {
+	  	  	 		console.log('吃');
+	  	  	 	},
+	  	  	 	drink: function() {
+	  	  	 		console.log('喝');
+	  	  	 	},
+	  	  	 	sayHello: function() {
+	  	  	 		return _message;
+	  	  	 	}
+	  	  	 };
+	  	  })();
+
+	  	  Person.eat();
+	  	  var msg = Person.sayHello();
+	  	  console.log(msg);
+
+	  	  // 构造函数封装
+	  	  
+	  	  var Super = function(name, age) {
+	  	  	 this.name = name;
+	  	  	 this.age = age;
+	  	  	 this.eat = function() {};  //实例化会造成内存开销，不推荐
+	  	  }
+
+	  	  var name = new Super('jack', 100).name;
+	  	  console.log(name);   // jack
+
+
+	  	  // 原型封装
+	  	  // 把方法和不变的值建议全部放到原型上，如果放到自身属性，每次new 的时候都要创建一个新的属性，这样造成性能影响。如果放到原型，每次实例化原型属性可以实现共享,地址会直接指向原型上的方法,推荐
+	  	  Super.prototype.sayHello = function() {
+	  	  	 console.log(this.name+"你好");   
+	  	  }
+
+	  	  new Super('jack', 100).sayHello();
+
+
+	  	  // 不管是采用什么方法封装， 它的目的都是为了模块化，建议全局变量。
+	  </script>
+</body>
+</html>

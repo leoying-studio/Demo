@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script>
+			// Object对象
+
+			function Person() {
+				this.name = "";
+			};
+			Person.prototype = {
+				getName: function() {
+					return this.name;
+				},
+				setName: function(name) {
+					this.name = name;
+				}
+			};
+
+			//es3  继承
+			
+			var Woman = function() {};
+			Woman.prototype = new Person();
+
+		
+
+			// es5继承
+			Woman.prototype = Object.create(new Woman());
+			var woman = new Woman();
+			woman.setName('张三丰');
+			woman.getName();
+
+
+			//es5 get  set
+			var o = { 
+				a: 1, 
+				get a(){return this.a}, 
+				set a(value){alert(value)}
+			};
+			o.a = 2;
+
+
+			// Date
+			//es5,静态方法
+			Date.now();
+
+			//es3
+			
+			new Date().getTime();
+		</script>
+</body>
+</html>

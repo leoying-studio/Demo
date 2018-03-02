@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<!-- 单体模式 -->
+		<script>
+			var f = (function() {
+				var name = "张三";
+				return function() {
+					return name;
+				}
+			});
+
+			var v = f()();
+			console.log(v);
+		</script>
+</body>
+</html>

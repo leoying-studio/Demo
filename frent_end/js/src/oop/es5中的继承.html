@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script>
+			function Person() {
+				this.name = "hello world";
+			}
+
+			Person.prototype = {
+				sayHello: function() {
+					console.log('sayHello');
+				},
+				eat: function() {
+					console.log('eat');
+				}
+			};
+
+			Person.prototype.constructor = Person;
+
+			var woman = Object.create(Person);
+			console.log(woman);
+			woman.name = 'zs';
+		</script>
+</body>
+</html>

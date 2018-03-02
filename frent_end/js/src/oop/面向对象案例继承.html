@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// 动物
+		function Animal() {
+			this.name = "动物";
+			this.age = 0;
+			this.gender = "0";
+		};
+
+		Animal.prototype = {
+			eat: function() {
+				console.log("eat");
+			}
+		};
+
+		Animal.sayHello = function() {
+			console.log("hello");
+		}
+
+		Animal.prototype.constructor = Animal;
+
+		// 原型继承, 使用空对象 F  作为介质继承
+		function extend(parent, child) {
+			var F = function() {};
+			F.prototype = parent.prototype;
+			child.prototype = new F();
+			// 继承静态方法
+			for (let key in parent) {
+				child[key] = parent[key];
+			}
+		}	
+
+		var cat = function() {};
+		extend(Animal, cat);
+		// 实例化
+		var c = new cat();
+		c.eat();
+		// 调用静态
+		cat.sayHello();
+	</script>
+</body>
+</html>

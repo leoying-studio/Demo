@@ -35,14 +35,13 @@
 			People.getName();
 
 			// 灵活单例模式,可以模块化并对变量进行私有化防止篡改.
-			// 用到了闭包
 			var Person = (function() {
 				var _message;
-				function getMessage() {
+				var getMessage = function getMessage() {
 					return _message;
 				}
 
-				function setMessage(message) {
+				var setMessage = function setMessage(message) {
 					_message = message;
 				}
 

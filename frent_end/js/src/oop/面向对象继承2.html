@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<script>
+			function Person() {};
+			Person.prototype.sayHello = function() {
+				console.log('会说话');
+			};
+
+			function Parent() {};
+			Parent.prototype = new Person();
+			Parent.prototype.constructor = Parent;
+
+			var p = new Parent();
+		</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 类式继承
+		function Person() {
+			this.gender = "性别";
+			this.age = 20;
+			this.id = 250;
+			// 继承只能基于构造器
+			this.sayHello = function() {
+				console.log("打招呼");
+			}
+		};
+
+		function Men() {
+			Person.call(this);
+		}
+
+		var a = new Men();
+		console.log(a);
+		// 
+	</script>
+</body>
+</html>

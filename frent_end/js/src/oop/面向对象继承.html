@@ -6,6 +6,7 @@
 </head>
 <body>
 	<script>
+		// es3  继承,  直接继承法
 		function Person() {
 			this.name = '张三';
 			this.age = 28;
@@ -22,22 +23,60 @@
 		function Parent() {
 			this.id = 1;
 		};
-		Parent.prototype = Person;
-		Parent.prototype.work = function() {};
+		// 仅仅继承原型方法,这种方法的好处是比较节省内存，直接继承了原型，相比  Parent.prototype = new Person() 相比
+		// 性能要高很多，缺点是不能一起继承自身属性。还有就是这样直接等于赋值会造成  如果在new之前修改了Parent.prototype, Person.prototype属性也会跟着变化.  
+		Parent.prototype = Person.prototype;
+		Parent.prototype.work = function() {console.log("会工作")};
 		Parent.prototype.constructor = Parent;
 
 		function Children() {
 
 		}
-		Children.prototype = Parent;
+		Children.prototype = Parent.prototype;
 		Children.prototype.playGame = function() {
 			console.log('play game');
 		}
 		Children.prototype.constructor = Children;
 
+
+		console.log(Person.prototype, "-");  //  指向了childern, 内部的东西全部改了， 基类也全部有了这些方法，比如playGame, work方法。需要改进
+
 		//  继承完了, 开始制造一个children
 		var children = new Children();
+		children.sayHello();
+		children.work();
+		children.playGame();
 		console.log(children);
+		console.log(Parent.prototype);
+		console.log(Person.prototype);
+
+
+		/**
+		 * 改进
+		 */
+		var extend = function(parent, child) {
+			var F = function() {};
+			// 利用空函数来继承父类的原型属性
+			F.prototype = Parent.prototype;
+			// 这里和直接 new parent的区别:parent可能会有自身属性，这不是我需要的。 我只需要从原型链上去继承他属性，实际上是继承地址的引用，这样可以减少内存消耗. 而这样之所以可以解决改变父类prototype 的问题，主要是使用了new 关键字， new 了 parent的 prototype, 也就仅仅继承了parent 的原型属性的方法引用，不会去生成新的实例。
+			child.prototype = new F();
+			child.prototype.constructor = child;
+			Child.uber = Parent.prototype;
+		}
+
+		// 或者进行拷贝继承
+		var copy = function(parent, child) {
+			for (var key in parent.prototype) {
+				child.prototype[key] = parent.prototype[key];
+			}
+		}
+
+		// 对象继承, 等价于 object.create();
+		var ext = function(o) {
+			var F = function() {};
+			f.prototype = o;
+			return new f();
+		}
 	</script>
 </body>
 </html>

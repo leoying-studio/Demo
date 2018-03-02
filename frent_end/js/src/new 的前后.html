@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var P = function() {};
+
+		P.prototype = {
+			say: function() {
+				console.log('say');
+			}
+		};
+
+		var p = new P();
+		console.log(p.eat());  // 错误
+
+		P.prototype.eat = function() {
+			console.log('eat');
+		}
+		// ok
+		console.log(p.eat());
+	</script>
+</body>
+</html>

@@ -6,11 +6,18 @@
 </head>
 <body>
 	  <script>
+	// 可执行
 	  	  var o = null;
 	  	  if (o && o.name && o.name.age) {
 	  	  	 console.log('success');
 	  	  }
 	  	  console.log('error');
+		  
+	// 不可执行
+		  var a = null;
+	  	  if (a.name.age && a.name) {
+	  	  	 console.log('success');
+	  	  }
 	  </script>
 </body>
 </html>
