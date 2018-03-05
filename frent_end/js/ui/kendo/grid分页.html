@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/kendo.common.min.css">
+	<link rel="stylesheet" href="./css/kendo.bootstrap.min.css">
+ 	<script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+</head>
+<body>
+	  <div id="grid"
+		data-role="grid"
+        data-editable="true"
+        data-pageable="{
+        	pageSize: 20
+        }"        
+        data-columns="[
+                         { 'field': 'name', title: '姓名'},
+                         { 'field': 'age', title: '年龄' },
+                      ]"
+        data-bind="source: ds"
+	  ></div>
+	  <script>
+	  	  var dataSource = [];
+	  	  var pagingSource = [];
+	  	  var users = ["许梓依","许磊","许梓馨","许梓欣","许永浩","许永程","许永励","许雨强","许强兴","许堪翟","许文鈊"];
+	  	  for(var i = 0; i < 99999; i++) {
+	  	  	 dataSource.push({
+	  	  	 	name: users[Math.floor(Math.random()*10)],
+	  	  	 	age: Math.ceil(Math.random() * 100)
+	  	  	 });
+	  	  }
+		pagingSource = dataSource.slice(0, 20);
+		var viewModel = kendo.observable({
+	        isVisible: true,
+	        ds: pagingSource,
+	        page: function() {
+
+	        },
+	        pageable: true
+	    });
+
+	    kendo.bind($("#grid"), viewModel);
+
+	  	  // mvvmv  模式
+	  	  // var grid = $("#grid").kendoGrid({
+	  	  // 	 dataSource: dataSource,
+  	  	//      columns: [
+      //               {
+      //                   field: "name",
+      //                   title: "姓名"
+      //               },
+      //               {
+      //                   field: "age",
+      //                   title: "年龄"
+      //               }
+      //         ],
+	     //      pageable: {
+      //           refresh: true,
+      //           pageSizes: true,
+      //           buttonCount: 5,
+      //           pageSize:50
+	     //      },
+	     //      height: 550,
+	     //      groupable: true,
+	     //      sortable: true,
+	     //      pageSize: 50
+	  	  // });
+	  </script>
+</body>
+</html>

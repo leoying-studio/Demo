@@ -6,6 +6,7 @@
 </head>
 <body>
 		<script>
+			// 静态方法 all
 			function P() {
 				var items = [];
 				for ( var  i = 0; i< 100; i++) {
@@ -21,6 +22,73 @@
 				console.log(values);
 			})
 
+
+			function P2(status) {
+				return new Promise(function(resolve, reject) {
+					if (typeof status == 'undefined') {
+						throw new Error('缺少参数');
+					}
+					if (status) {
+						resolve(true);
+					} else {
+						reject(false);
+					}
+				});	
+			}
+			// 链式调用 true
+			P2(true).then(function(value) {
+				return value;
+			}).then(function(value) {
+				return value;
+			}).then(function(value) {
+				alert(value);
+			});
+
+			// 链式调用 error
+			P2().catch(function(e) {
+				console.log(e);
+			});
+
+			// 链式调用 err 
+			P2(false).then(function() {
+
+			}, function(value) {
+				throw new Error(value);
+			}).catch(function(err) {
+				console.log(err);
+			});
+
+
+
+			/**
+			 * 如何理解阮一峰的那句话， Promise 的状态一旦变化了,就不会再去变化，会凝固.
+			 * 举例说明
+			 */
+			
+			var Pro = new Promise(function(resolve, reject) {
+				// 第一句 resolve
+				resolve(true);
+				// 再去执行reject
+				reject(false);
+				// 以上代码执行了两次状态，最后的结果是以第一次变化的为主，then并没有执行失败的回调。
+				// 所以说明了 Promise 一旦变化一次以后就不会再去变化。
+			});
+
+			Pro.then(function(){
+				console.log('success');   // 已经执行
+			}, function() {
+				console.log('error');     // 未执行
+			});
+
+
+			/**
+			 * Promise 的异常(catch)冒泡性质，如果不去捕获会一直向后传递
+			 */
+			P2().then(function() {
+				console.log('该回调中未捕获');
+			}).catch(function(e) {
+				console.log(e, '捕获到冒泡的异常');
+			});	
 		</script>
 </body>
 </html>

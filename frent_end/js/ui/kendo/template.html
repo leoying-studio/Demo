@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="./css/kendo.common.min.css">
 	<link rel="stylesheet" href="./css/kendo.default.min.css">
 	<link rel="stylesheet" href="./css/kendo.default.mobile.min.css" />
-
  	<script src="js/jquery.min.js"></script>
     <script src="js/kendo.all.min.js"></script>
 </head>
@@ -43,7 +42,7 @@
 					{field: 'age',  title: '年龄'},
 					{
 						template: '#for(var i = 0; i < data.categories.length; i++) { # '
-						+ "<input type='checkbox'> #= data.categories[i].name #"
+						+ "<input type='checkbox' class='k-checkbox'> #= data.categories[i].name #"
 						+ "# } #"
 					}
 				],

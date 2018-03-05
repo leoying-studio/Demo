@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<div class="container">
+			<table>
+					
+			</table>
+		</div>
+		<script>
+			var MVC = {
+
+			};
+
+			MVC.model = (function() {
+				var data =[
+					{name: '张三丰', age: 18, address: '湖北随州'},
+					{name: '张无忌', age: 20, address: '湖北襄樊'}
+				];
+
+				return {
+					setData: function(changeData) {
+						data = changeData;
+						this.render();
+					},
+					getData: function() {
+						return data;
+					},
+					render: function() {
+						MVC.view();
+					}
+				};
+			})();
+
+			MVC.view = (function() {
+				var m = MVC.model.getData();
+				return function() {
+					var html = '';
+					for (var k = 0; k < m.length; k++) {
+						html+="<tr>";
+						var tds = m[k];
+						for(var key in tds) {
+							html+="<td>"+tds[key]+"</td>"
+						}
+						html+="</tr>";
+					}
+					document.getElementsByTagName('table')[0].innerHTML = html;
+				};
+			})();
+
+			MVC.control = (function() {
+				var self = this;
+				return {
+					setData(data) {
+						MVC.model.setData(data);
+					},
+					init: function() {
+						MVC.view();
+					}
+				};
+			})();	
+
+			// 通过控制器修改数据
+			MVC.control.init();
+			MVC.control.setData([
+				{name: '苗人凤', age: 18, address: '湖北随州'},
+				{name: '张无忌', age: 20, address: '湖北襄樊'}
+			]);
+		</script>
+</body>
+</html>

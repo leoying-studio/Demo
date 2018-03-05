@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<!-- 状态管理模式 -->
+		<script>
+			var stateManagement = function() {
+				var state = {
+					jump: function() {
+						console.log('jump');
+					},
+					shooting: function() {
+						console.log('shooting');
+					},
+					squat: function() {
+						console.log('squat');
+					}
+				};
+
+				var trigger = function() {
+					var args = arguments;
+					for (var k = 0; k < args.length; k++) {
+						if (typeof args[k] !== 'string') {
+							throw new Error('请输入字符串');
+						}
+						state[args[k]]();
+					}
+				}
+
+				return trigger;
+			
+			};
+
+			stateManagement()('jump', 'shooting');
+		</script>
+</body>
+</html>
