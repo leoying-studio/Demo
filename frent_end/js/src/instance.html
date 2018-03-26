@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+		<script>
+			var f = function() {};
+			var o = new f;
+			console.log(o instanceof f);   // true
+
+			//instanceof 是用来判断是否是某个类(对象)的实例。
+			//但是，它的判断根本并不是单单去判断是否由某个类实例化而来的。  主要是来判断当前的实例是否继承了该类的protoype属性.
+		</script>
+</body>
+</html>

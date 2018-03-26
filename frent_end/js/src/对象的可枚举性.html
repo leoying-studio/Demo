@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/**
+		 * constructor 具有不可枚举性
+		 */
+		var f = function() {};
+		f.prototype = {
+			constructor: f,
+			getName: function() {
+				console.log('getName');
+			}
+		};
+
+		// 测试是否可以枚举
+		var o = new f();
+		for (var k in o) {
+			console.log(k, o[k]);  // 能遍历出constructor
+		}
+
+		var P = function() {};
+		P.prototype.getName = function() {};
+		// 设置一个不可枚举属性
+		Object.defineProperty(P.prototype, 'sayHello', {
+			configurable: false,
+            enumerable: false,
+            value: 'not enumerable'
+		});
+
+		// 设置一个可枚举的属性
+		Object.defineProperty(P.prototype, 'Hello', {
+			configurable: false,
+            enumerable: true,
+            value: ' enumerable'
+		});
+
+		for (var k in P.prototype) {
+			console.log(k, P.prototype[k]);  // 不能遍历出constructor和 sayHello
+		}
+
+		 //  Object.getOwnPropertyDescriptor(obj1, 'test').enumerable  一个仅仅去验证自身属性的可枚举验证 true  或者 false
+
+// 	与可枚举性相关的操作和方法
+// 　　　　a、for…in：遍历自身和继承的可枚举属性；
+// 　　　　b、Object.keys()：返回对象自身的可枚举属性键名；
+// 　　　　c、JSON.stringify()：串行化对象自身的可枚举属性；
+// 　　　　d、Object.assign()：复制自身可枚举的属性；
+// 　　　　e、Reflect.enumerate():返回所有for...in循环会遍历的属性；
+// 　　　　f、所有Class的原型的方法都不可枚举。
+// 　　　　通过第一节中obj1的属性结构截图可分析其属性的组成：
+// 　　　　　　自身属性：age、colors、name、test（不可枚举）；
+// 　　　　　　原型(继承)属性：sayAge、sayName。
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="gb2312">
+	<title></title>
+	<style>
+		#container {
+			position: fixed;
+			right: 0;
+			bottom: 15px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<button id="btn1">按钮1</button>
+		<button id="btn2">按钮2</button>
+	</div>
+
+	<script>
+		// 利用事件委托
+		var clicked1 = false;
+		var clicked2 = false;
+		document.getElementById('container').onclick = function(e) {
+			let event = e.event || window.event;
+			// 按钮一
+			if (event.target.getAttribute('id') == 'btn1' && !clicked1) {
+				document.getElementById('btn2').style.display = 'none';
+				document.getElementById('btn1').style.display = 'block';
+				clicked1 = true;
+			} else if (event.target.getAttribute('id') == 'btn1' && clicked1) {
+				document.getElementById('btn1').style.display = 'none';
+				document.getElementById('btn2').style.display = 'block';
+				clicked1 = false;
+			}
+
+			// 按钮二
+			if (event.target.getAttribute('id') == 'btn2' && !clicked2) {
+				document.getElementById('btn1').style.display = 'none';
+				document.getElementById('btn2').style.display = 'block';
+				clicked2 = true;
+			} else if (event.target.getAttribute('id') == 'btn2' && clicked2) {
+				document.getElementById('btn2').style.display = 'none';
+				document.getElementById('btn1').style.display = 'block';
+				clicked1 = false;
+			}
+		}
+
+	</script>
+</body>
+</html>

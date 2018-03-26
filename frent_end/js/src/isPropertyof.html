@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 判断当前对象中是否存在该原型属性。  
+		var F = function () {}
+
+		F.prototype.sayHello = function() {
+			console.log('sayHello');
+		}
+		let f = new F;
+		// 判断类对象 F 的原型是否属于 f 对象 
+		var s = F.prototype.isPrototypeOf(f);    
+		var b = Object.prototype.isPrototypeOf(f); // true
+		console.log(f instanceof F); // true
+		console.log(f instanceof Object); // true
+		console.log(s);  // true
+		console.log(b);	 // true
+		
+
+		// 所以仔细分析，可以认为 instanceOf ,  isPrototypeOf  本质上相同。 
+		// 一个 A 是否属于B,  另外一个 B 是否继承于A的原型。   
+		// 一正一反而已，但是判断的目的相同。
+	</script>
+</body>
+</html>

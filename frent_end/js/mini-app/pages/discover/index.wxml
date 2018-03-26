@@ -1,0 +1,26 @@
+<!--pages/discover/index.wxml-->
+<view class='discover'>
+  <view class='header-container'>
+    <view class='header-inner'>
+      <view class='header'>
+        <view class='tab-item' wx:for="{{tabs}}" wx:key="{{index}}" data-index="{{index}}" bindtap="changeTab">
+          <text>{{item.name}}</text>
+        </view>
+        <view wx:if="{{tabsInfo.length}}" class='{{"underline"}}' style="{{underlineTransition}}">
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='pages'>
+    <swiper current="{{activeTab}}" bindchange="swiperChange" style="height: 800px">
+      <swiper-item>
+        <view class='subject-wrapper'>
+          <image wx:for="{{subjects}}" src="{{item.image}}" wx:key="{{index}}" mode='scaleToFill' class='subject' />
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <text>xxx</text>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
