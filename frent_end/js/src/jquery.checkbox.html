@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="gb2312">
+	<meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<title>井冈山</title>
+	<style>
+		.container {
+			
+		}
+		.container span{
+			min-width: 50px;
+			padding: 0 10px;
+			background: green;
+			margin: 0 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="checkbox" name="one" id=""> one
+		<input type="checkbox" name="two" id=""> two
+		<input type="checkbox" name="three" id=""> three
+		<input type="checkbox" name="four" id=""> four	
+	</div>
+	<script>
+		$("input[type='checkbox']").click(function() {
+			var name = $(this).attr('name');
+			if ($(this).is(':checked') && name == 'one') {
+				alert(true);
+			} else {
+				alert(false)
+			}
+		})
+	</script>
+</body>
+</html>
