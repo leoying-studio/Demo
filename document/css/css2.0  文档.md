@@ -64,23 +64,58 @@
  ## 通过相对定位来实现
 ```
 	<style type="text/css">
-    *{margin: 0;padding:0;}
-		div{
-			width:150px;
-			height: 100px;
-			position: relative;
-			border:1px solid #000;
-		}
-		img {
-			width: 50px;
-			height: 50px;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-top: -25px; /* 高度的一半 */
-			margin-left: -25px; /* 宽度的一半 */
-		}
+		*{margin: 0;padding:0;}
+			div{
+				width:150px;
+				height: 100px;
+				position: relative;
+				border:1px solid #000;
+			}
+			img {
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -25px; /* 高度的一半 */
+				margin-left: -25px; /* 宽度的一半 */
+			}
 	</style>
 ```
 通过position定位来实现。将div设置成相对定位relative，将img设置成绝对定位absolute，left:50%，top:50%，此时图片的左上角位于div的中心，
 要是图片的中心位于div的中心，就需要将图片向上移动图片高度的一半，并向左移动图片宽度的一半。
+
+# div 垂直居中
+## 1.相对于浏览器
+```
+	width: 150px;
+    height: 100px;
+    background: orange;
+    position: absolute;
+    top: 50%;
+    margin: -50px 0 0 0;
+```
+## 2.相对于父容器
+	```
+	html代码：
+		<div id="box">
+			<div id="child">我是测试DIV</div>
+		</div>
+
+		#box {
+			width: 300px;
+			height: 300px;
+			background: #ddd;
+			position: relative;
+		}
+		#child {
+			width: 150px;
+			height: 100px;
+			background: orange;
+			position: absolute;
+			top: 50%;
+			margin: -50px 0 0 0;
+			line-height: 100px;
+		}
+	```
+这个方法兼容性不错，但是有一个小缺点：必须提前知道被居中块级元素的尺寸，否则无法准确实现垂直居中。
