@@ -96,7 +96,7 @@
     margin: -50px 0 0 0;
 ```
 ## 2.相对于父容器
-	```
+```
 	html代码：
 		<div id="box">
 			<div id="child">我是测试DIV</div>
@@ -117,5 +117,51 @@
 			margin: -50px 0 0 0;
 			line-height: 100px;
 		}
-	```
+```
 这个方法兼容性不错，但是有一个小缺点：必须提前知道被居中块级元素的尺寸，否则无法准确实现垂直居中。
+
+## 3.相对于父容器不需要设置高度
+```
+	<div id="child">
+		我是一串很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的文本
+	</div>
+	#box {
+		width: 300px;
+		height: 300px;
+		background: #ddd;
+		position: relative;
+	}
+	#child {
+		background: #93BC49;
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+```
+这种方法有一个非常明显的好处就是不必提前知道被居中元素的尺寸了，因为transform中translate偏移的百分比就是相对于元素自身的尺寸而言的。
+
+## 4.第四种，适合图片类型或者固定宽高的
+```
+	<div id="box">
+		<div id="child">呆呆今天退役了(。﹏。)</div>
+	</div>
+	#box {
+		width: 300px;
+		height: 300px;
+		background: #ddd;
+		position: relative;
+	}
+	#child {
+		width: 200px;
+		height: 100px;
+		background: #A1CCFE;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		line-height: 100px;
+	}
+
+```
+这种实现方式的两个核心是：把要垂直居中的元素相对于父元素绝对定位，top和bottom设为相等的值，我这里设成了0，当然你也可以设为99999px或者-99999px无论什么，只要两者相等就行，这一步做完之后再将要居中元素的margin设为auto，这样便可以实现垂直居中了。
+　　被居中元素的宽高也可以不设置，但不设置的话就必须是图片这种自身就包含尺寸的元素，否则无法实现。
