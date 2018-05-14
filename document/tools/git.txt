@@ -1,0 +1,38 @@
+git 仓库初始化
+1. git init  初始化完成
+2. 添加文件  先在本地创建完成， 然后通过 git add <文件名>， 可以添加多次， 如果想全部添加 git add .  会添加所有, 存到暂存区
+3. git commit -m "说明"， 提交修改
+4. git push  正式推送到仓库
+
+
+版本回退
+1. git log  git reflog进行日志查看
+2. git reset --hard HEAD^ 回退到上一个版本
+3. git reset --hard 3628164  回到指定版本   
+版本号没必要写全,前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。
+
+
+删除文件
+git rm <文件名>
+
+
+新建远程仓库并关联仓库
+1. git remote add origin git@github.com:leoying-studio/hello.git   // hello 为新的远程仓库名称
+2. git push -u origin master	// 需要拷贝的分支名称   
+
+
+克隆远程库
+git clone git@github.com:leoying/hello.git  // hello.git 为新的远程仓库名称
+
+
+
+/*
+ * 分支管理
+ */
+ 
+ 创建分支:  git checkout -b dev  //  git checkout命令加上-b参数表示创建并切换
+ 查看分支:  git branch
+ 合并分支： 
+			1. 切换到master
+			2. 输入命令： git merge dev   // 合并dev
+ 删除分支： git branch -d dev
