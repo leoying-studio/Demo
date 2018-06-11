@@ -1,36 +1,66 @@
 <template>
-  <div id="app">
-     <own-input v-model="value"></own-input>
-     <own-button type="primary"></own-button>
-     <own-send-code></own-send-code>  
-     <own-dialog></own-dialog>
-  </div>
+     <container>
+          <div class="content">
+               
+          </div>
+          <div class="content2">
+              
+          </div>
+           <div class="content2">
+              
+          </div>
+           <div class="content2">
+              
+          </div>
+           <div class="content2">
+              
+          </div>
+           <div class="content2">
+              
+          </div>
+           <div class="content2">
+              
+          </div>
+           <div class="content2">
+              
+          </div>
+     </container>
 </template>
 
 <script>
-import Input from "@/components/input";
-import Button from "@/components/button";
-import SendCode from "@/components/send-code";
-import Dialog from "@/components/dialog";
+import Container from './components/container';
 export default {
     name: 'app',
     components: {
-      "own-input": Input,
-      "own-button": Button,
-      "own-send-code": SendCode,
-      "own-dialog": Dialog
+       container : Container
     },
     data() {
       return {
          value:""
       }
     },
+    methods: {
+      onScroll() {
+        console.log('tttt');
+      }
+    },
     watch: {
+
+    },
+    mounted() {
 
     }
 }
 </script>
 
 <style>
+  .content {
+    height: 500px;
+    background: red;
+  }
+  .content2 {
+    height: 500px;
+    background: blue;
+  }
 
 </style>
