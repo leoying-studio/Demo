@@ -1,4 +1,4 @@
-﻿# 一, react-native  的环境搭建。
+# 一, react-native  的环境搭建。
 ## 1、普通安装
 (1)、 npm install -g react-native-cli   //安装脚手架
 (2).  react-native-cli init "项目名称"  // 初始化项目
@@ -139,7 +139,32 @@ only-if-cached：总是使用缓存数据，如果没有缓存，则失败。
 ViewPagerAndroid 的弊端:  组件实例化之后没办法通过  setState 再次改变属性(不能再次渲染),  一般在组件实例化之前指定好属性
 实例化之后无法再次渲染render
 
+# 七、 React Native 使用原生模块ART 绘制图
+1. 导入
 
+```
+	import { ImageBackground, ART } from 'react-native';
+	import { ImageBackground, ART } from 'react-native';
+```
+
+2. 绘制路径 Path().moveTo(1, 1).lineTo(20, 1).lineTo(10, 10).close();
+
+``` 
+<Surface width={100} height={100}>
+	<Shape d={path} stroke="#000000" strokeWidth={1} fill={'green'}> </Shape>
+</Surface>
+```
+3. 说明： moveTo(x, y) x轴和y轴,开始绘制路径, lineTo(x, y)x轴和y轴 到下一个点的位置坐标, close关闭.
+4. **绘制需要顺时针规则进行绘制图案, 绘制规则中测试并没发现使用负值坐标的概念，如果需要绘制负值坐标的概念可以先把坐标的初始坐标y轴往下挪动， 后面可以把下一个坐标回到初始位置**
+```
+// 正三角形路径, y轴初始值为负的10, 第二个坐标y轴往上挪动到1，第三个y轴还原为10
+// 这样就好了绘制出来了正三角的效果出来.
+let path = Path().moveTo(1, 10).lineTo(10, 1).lineTo(20, 10).close();
+```
+```
+    // 绘制倒三角, 同理， 核心在于中间的第二个点y轴往下挪动十个像素点
+    let path = Path().moveTo(1, 1).lineTo(10, 10).lineTo(20, 1).close();
+```
 
 # 触摸手势：PanResponder（响应）
 # 滚动视图:  ScrollView  
@@ -171,4 +196,15 @@ ViewPagerAndroid 的弊端:  组件实例化之后没办法通过  setState 再�
 ```
 ### 8. image 图片如果是安卓平台需要添加样式属性  overlayColor: '#fff',  否则可能会有圆角显示不全的情况。
 
-	
+### 9. 在react-native里面子元素如果设置负值margin想超出部分父容器是没办法实现的，超次部分会不显示出来，解决方法，换成同级别并且添加定位处理。
+
+### 10.在做 React Native 应用的时候，我们常常使用 react-navigation 做导航栏，发现 Android 上的标题不居中，IOS 上没问题。
+
+1 如果只有标题，那就在 headerTitleStyle 设置 alignSelf:'center' 就可以。
+2 如果标题栏左侧还有返回按钮，发现标题偏右依然不居中，则简单的处理方式是:
+在右边再添加一个等宽高的空 View，如下:
+
+``` 
+	headerRight: <View /> 
+```
+升级新版本之后发现这招不灵了，可以在 headerTitleStyle 里设置 flex:1, textAlign: 'center' 来实现。
